@@ -4,7 +4,9 @@ import java.util.Scanner;
 public class Main{
     public static void main(String[] args){
         Scanner in=new Scanner(System.in);
+
 //shprehja e pare:
+
         double a,p,m1,m2;
         System.out.println("Jepni vleren e a: ");
         a=in.nextDouble();
@@ -16,6 +18,9 @@ public class Main{
         m2=in.nextDouble();
      double g=(4*Math.pow(Math.PI,2))*Math.pow(a,3)/(Math.pow(p,2)*(m1+m2));
 System.out.println("Rezultati:"+g);
+
+//Shprehja e dyte:
+
    System.out.print("Jepni vleren per a: ");
         double a2=in.nextDouble();
         System.out.print("Jepni vleren per b: ");
@@ -24,5 +29,6 @@ System.out.println("Rezultati:"+g);
         double y=in.nextDouble();
     double c=Math.sqrt(Math.pow(a2,2)+Math.pow(b2,2)-(2*a2*b2*Math.cos(y)));
     System.out.println("Rezultati: "+c);
+
     }
 }
