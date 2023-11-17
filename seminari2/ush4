@@ -1,1 +1,22 @@
+/*Cila është vlera e shprehjeve të mëposhtme? Në çdo rresht supozoni se:*/
+import java.util.Scanner;
+public class Main{
+    public static void main(String[] args){
+        Scanner in=new Scanner(System.in);
+        String s = "Hello";
+        String t = "World";
+        int l=s.length() + t.length();
+       //Sa karaktere kam 
+        String  l2= s.substring(1, 2);
+      //Do afishohet stringu nga index 1(karakteri2) deri te nr tjeter,por pa e perfshire numrin tjeter.
+        String l3=s.substring(s.length() / 2, s.length());
+      //kujdes gjatsin e ke 5,5/2=2.5 marrim parasysh pjesen e plote.
+        String l4=s + t;
+      //HelloWorld
 
+        System.out.println(l);  //5+5=10
+        System.out.println(l2); //e
+        System.out.println(l3); //llo
+        System.out.println(l4); //HelloWorld
+    }
+}
