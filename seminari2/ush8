@@ -1,1 +1,20 @@
-
+/*
+Ndërtoni një program që lexon nga përdoruesi shkronjën e drive (c), path-in (\Windows\System),
+emrin e skedarit (Readme), dhe tipin e skedarit (txt) dhe më pas afishon emrin e plotë të skedarit.
+C:\Windows\System\Readme.txt.
+*/
+import java.util.Scanner;
+public class Main{
+    public static void main(String[] args){
+ Scanner in=new Scanner(System.in);
+ System.out.print("Jepni shkronjen e drive-it(spsh c):");
+ char k=in.next().charAt(0);
+ System.out.print("Jepni emrin e path-it(spsh \\Windows\\System\\):");
+ String path=in.next();
+ System.out.print("Jepni emrin e skedarit(spsh Readme.):");
+ String emri=in.next();
+ System.out.print("Jepni tipin e skedarit(spsh txt.):");
+ String tipi=in.next();
+ System.out.println("Emri i plote: "+k+path+emri+tipi);
+    }
+}
