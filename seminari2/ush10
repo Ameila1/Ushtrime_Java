@@ -1,1 +1,30 @@
+/*
+Shkruani një program që lexon një numër të plotë dhe e ndan atë në një sekuencë shifrash
+individuale në një renditje të kundërt. Për shembull inputi 16384 shfaqet si më poshtë:
+1 6 3 8 4
+Ju mund të supozoni që inputi nuk ka më shumë se pesë shifra dhe nuk është negativ.
+*/
 
+import java.util.Scanner;
+public class Main{
+    public static void main(String[] args){
+ Scanner in=new Scanner(System.in);
+System.out.print("Jepni nje nr:");
+String nr=in.next();
+
+//numri sic ishte po me hapsira midis seciles shifer
+
+for(int i=0;i<nr.length();i++){
+    System.out.print(nr.charAt(i)+" ");
+}
+//numri reverse dhe me hapsira midis seciles shifer
+
+System.out.println();
+
+//kujdes nuk nisesh nga indeksi i fundit fare te stringu,i parafundit sherben si i fundit.
+
+for(int i=nr.length()-1;i>=0;i--){
+    System.out.print(nr.charAt(i)+" ");
+}
+    }
+}
