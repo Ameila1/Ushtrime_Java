@@ -1,1 +1,42 @@
-
+/*
+Shkruani një program i cili pasi merr dy numra nga përdoruesi afishon shumën, diferencën,
+prodhimin, mesataren, vlerën absolute, maksimumin dhe minimumin midis tyre.
+b) Modifikoni ushtrimin e mësipërm duke formatuar outputin si më poshtë:
+Sum: 45
+Difference: -5
+Product: 500
+Average: 22.50
+Distance: 5
+Maximum: 25
+Minimum: 20
+*/
+import java.util.Scanner;
+public class Main{
+    public static void main(String[] args){
+ Scanner in=new Scanner(System.in);
+ System.out.print("Jepni nr e pare: ");
+ int a=in.nextInt();
+ System.out.print("Jepni nr e dyte: ");
+ int b=in.nextInt();
+ int shuma=a+b;
+ int prodhimi=a*b;
+ double diferenca,pjestimi,mesatarja;
+        if (a > b) {
+            diferenca=a-b;
+            pjestimi=a/b;
+        }else{
+            diferenca=b-a;
+            pjestimi=b/a;
+        }
+        mesatarja=shuma/2;
+        System.out.println("Shuma:"+shuma);
+        System.out.println("Diferenca:"+diferenca);
+        System.out.println("Prodhimi:"+prodhimi);
+        System.out.println("Pjestimi:"+pjestimi);
+        System.out.println("Mesatarja:"+mesatarja);
+        System.out.println("Vlera absolute e vleres se pare:"+(Math.abs(a))+" 10" +
+                "5Vlera absolute2:"+(Math.abs(b)));
+        System.out.println("Max:"+(Math.max(a,b)));
+        System.out.println("Min:"+(Math.min(a,b)));
+    }
+}
