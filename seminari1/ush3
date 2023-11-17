@@ -6,10 +6,14 @@ Ndërtoni një program që afishon emrin tuaj brenda një katrori. Përdorni kar
  */
          String emri="Ameila";
          int gjatesia=emri.length()+4;
+
          //e bejme me +4 ,2 per hapsirat nga te dyja anet,e 2 per | ,qe ndodhen ne te dyja anet.
+
          System.out.print("+");
+
          //do vij gjatesia-2,pasi + dhe | jane ne nje drejtim,
         // dhe me shenjen - duhet te mbulosh vtem emrin dhe dy hapsirat boshe anash
+
          for(int i=0;i<gjatesia-2;i++){
              System.out.print("-");
          }
