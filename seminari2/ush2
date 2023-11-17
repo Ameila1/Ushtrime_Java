@@ -1,1 +1,17 @@
+Le të jetë n një numër i plotë dhe x një numër me presje notuese. Shpjegoni ndryshimin midis tyre.
+
+a. n = (int) x; dhe n = (int) Math.round(x);
+//spsh
+KERKESA A
+int n=10;
+double x=10.56d;
+n=(int) x; //do te ruhet vetem pjesa e plote,te int
+//Do afishohet 10
+KERKESA B
+n=(int)Math.round(x);//Do ruhet pjesa e plote,por e rrubullakuar.
+//Do afishohet 11
+
+
+
+
 
