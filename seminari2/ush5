@@ -1,1 +1,18 @@
-
+/*
+5. Shkruani kodin që në një string
+a) Merr karakterin e parë
+b) Merr karakterin e fundit
+c) Heq karakterin e parë
+d) Heq karakterin e fundit
+*/
+public class Main{
+    public static void main(String[] args){
+        String emri="Ameila";
+        System.out.println(emri.charAt(0));                           //A
+        System.out.println(emri.charAt(emri.length()-1));             //a
+        System.out.println(emri.substring(1,emri.length()));          //meila     //SQARIM:gjatesia e emrit=6,vlera e 6 nuk perfshihet,
+        System.out.println(emri.substring(0,emri.length()-1));        //Ameil     //por indexi eshte nga 0-5,emri.length()->do shkoj deri ne index 5 
+                                                                                  //po qe indexi 5 perfshin gjithe emrin e plote
+                                                                                  //length()-1=6-1=5(0,1,2,3,4)=A,m,e,i,l
+    }
+}
