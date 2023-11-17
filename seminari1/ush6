@@ -6,6 +6,5 @@ public class Main {
     {
         JOptionPane.showMessageDialog(null, "Ckemi Ameila!");
 //ne vend te "Hello World" vura "Ckemi Ameila!"
-
     }
 }
