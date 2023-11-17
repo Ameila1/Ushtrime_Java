@@ -1,1 +1,19 @@
-
+/*
+Ndërtoni një program që kërkon nga përdoruesi rrezen dhe më pas afishon:
+a. sipërfaqen e rrethit me atë rreze
+b. Vëllimin dhe sipërfaqen e sferës me atë rreze
+*/
+import java.util.Scanner;
+public class Main{
+    public static void main(String[] args){
+ Scanner in=new Scanner(System.in);
+ System.out.println("Jepni nje vlere per rrezen: ");
+ double r=in.nextDouble();
+ double sip_rrethi=Math.PI*Math.pow(r,2);
+ double sip_sfere=4*Math.PI*Math.pow(r,2);
+ double vellimi_sferes=(4/3)*Math.PI*Math.pow(r,3);
+ System.out.println("Siperfaqja e rrethit:"+sip_rrethi);
+ System.out.println("Siperfaqja e sferes:"+sip_sfere);
+ System.out.println("Vellimi i sferes:"+vellimi_sferes);
+    }
+}
