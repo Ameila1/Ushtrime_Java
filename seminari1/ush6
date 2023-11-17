@@ -1,1 +1,10 @@
-
+    /*Ekzekutoni programin e mëposhtëm. Më pas modifikojeni atë duke afishuar emrin
+        tuaj.*/
+        import javax.swing.JOptionPane;
+public class Main {
+    public static void main(String[] args)
+    {
+        JOptionPane.showMessageDialog(null, "Ckemi Ameila!");
+//ne vend te "Hello World" vura "Ckemi Ameila!"
+    }
+}
