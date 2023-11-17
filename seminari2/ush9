@@ -1,1 +1,20 @@
+/*
+Ndërtoni një program që lexon nga përdoruesi një numër midis 1,000 dhe 999,999 ku përdoruesi
+në input vendos presje. Më pas programi duhet të afishojë numrin pa presje për shembull:
+Ju lutemi vendosni një numër midis 1,000 dhe 999,999: 48,548
+48548
+*/
 
+import java.util.Scanner;
+public class Main{
+    public static void main(String[] args){
+
+ Scanner in=new Scanner(System.in);
+ System.out.print("Ju lutemi vendosni një numër midis 1,000 dhe 999,999:");
+ String nr=in.next();
+
+ String nr_ri=nr.replace(",","");
+System.out.println("Numri pa presje:"+nr_ri);
+
+    }
+}
