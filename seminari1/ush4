@@ -1,8 +1,10 @@
+
+public class Main{
+    public static void main(String[] args){
+
 /*
 Ndërtoni një program që afishon tre filmat tuaj të preferuar në tre rreshta të veçantë.
  */
-public class Main{
-    public static void main(String[] args){
      System.out.println("Filmi i pare i preferuar \"How to lose a guy in 10 days.\"");
       System.out.println("Filmi i dyte i preferuar:\"The summer  I turned pretty.\"");
       System.out.println("Filmi i trete i preferuar:\"After.\"");
