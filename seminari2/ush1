@@ -1,1 +1,19 @@
 
+/*Shkruani shprehjet e mëposhtme matematikore në Java.*/
+import java.util.Scanner;
+public class Main{
+    public static void main(String[] args){
+        Scanner in=new Scanner(System.in);
+//shprehja e pare:
+        double a,p,m1,m2;
+        System.out.println("Jepni vleren e a: ");
+        a=in.nextDouble();
+        System.out.println("Jepni vleren e p: ");
+        p=in.nextDouble();
+        System.out.println("Jepni vleren e m1: ");
+        m1=in.nextDouble();
+        System.out.println("Jepni vleren e m2: ");
+        m2=in.nextDouble();
+     double g=(4*Math.pow(Math.PI,2))*Math.pow(a,3)/(Math.pow(p,2)*(m1+m2));
+    }
+}
