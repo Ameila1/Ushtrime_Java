@@ -15,5 +15,14 @@ public class Main{
         System.out.println("Jepni vleren e m2: ");
         m2=in.nextDouble();
      double g=(4*Math.pow(Math.PI,2))*Math.pow(a,3)/(Math.pow(p,2)*(m1+m2));
+System.out.println("Rezultati:"+g);
+   System.out.print("Jepni vleren per a: ");
+        double a2=in.nextDouble();
+        System.out.print("Jepni vleren per b: ");
+        double b2=in.nextDouble();
+        System.out.print("Jepni vleren per y: ");
+        double y=in.nextDouble();
+    double c=Math.sqrt(Math.pow(a2,2)+Math.pow(b2,2)-(2*a2*b2*Math.cos(y)));
+    System.out.println("Rezultati: "+c);
     }
 }
