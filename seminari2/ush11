@@ -1,1 +1,79 @@
+/*
+Ndërtoni një program që lexon dy orë sipas formatit (0900,1730) dhe afishon numrin e orëve dhe
+minutave midis dy orëvë. Për shembull:
+Ju lutemi vendosni orën e parë: 0900
+Ju lutemi vendosni orën e dytë; 1730
+8 orë 30 minuta
+*/
+/*HAPAT PER TA ZGJIDHUR:
 
+SHOHIM QE DO MARRIM DY INPUTE,DY KOHE TE NDRYSHME,DHE KEMI MODIFIKIME ME TO PASI DO NDAJ ORET DHE MIN,
+DHE METADA E NDARJES SE NJE IMPUTI ME CON TE SUBSTRINGU(INDEX 1,INDEX 2)
+
+HAPI 1)     //SHOHIM QE DO MARRIM DY INPUTE,DY KOHE TE NDRYSHME,DHE KEMI MODIFIKIME ME TO PASI DO NDAJ ORET DHE MIN,
+            //DHE METADA E NDARJES SE NJE IMPUTI ME CON TE SUBSTRINGU(INDEX 1,INDEX 2)
+PRA DO I MARR IMPUTET SI STRING.
+
+HAPI 2)    //TE STRINGU KEMI RUAJTUR NJE NUMER DHE NUMRIN DUAM TA NDAJME NE PJESEN ORE DHE MIN,
+           //NUK MUN TE BEJ KETE KOMAND:int nr=(int)("nje string cfaredo")//ketu kemi karaktere speciale
+DO PERDORIM KOMANDEN int ora=Integer.parseInt("stringu");    //ne vend te stringut ne do te kemi koha1.substring(0,2);
+
+
+HAPI 3)    //TANI DO KRAHASOSH ORET,KUJDES NUK KRAHASOJME INPUTIN E PARE TE TIPIT STRING.KUJDES E THEKSOJ!!
+KRAHASOJME ORET.
+
+HAPI 4)   //VAZHDOJME NORMALISHT BEJME DIFERENCEN PER ORET DHE PER MIN.MINUTAT NA HAPIN PUNE!!
+int diferenca_ore=ora1-ora2;
+int diferenca_min=min1-min2;      //edhe pse ora1 mund te jete me e madhe,minutat1 mund te jene me te vogla.
+                                                                              (perdorim nje if tjeter)
+HAPI 5)    //KEMI VLERE NEGATIVE TE MIN
+           //SI TA RRGULLOJME PERDORIM NJE KUSHTE IF PER TI TREGUAR PROGAMIN CTE BEJ NE RAST SE DIFERENCA MIN DEL NEGATIVE:
+
+if(diferenca_min<0){
+diferenca_min=diferenca_min+60; //sup diferenca=30-40=-10; -10+60=50;
+oret--; //shtohet 60 per zbresim 1 ore.
+}
+HAPI 6)
+AFISHIMI
+*/
+
+import java.util.Scanner;
+public class Main{
+    public static void main(String[] args){
+ Scanner in=new Scanner(System.in);
+
+ System.out.print("Ju lutemi vendosni orën e parë:");
+ String koha1=in.next();
+ int ora1=Integer.parseInt(koha1.substring(0,2));
+ int min1=Integer.parseInt(koha1.substring(2,4));
+
+// System.out.println(ora1);
+// System.out.println(min1);
+
+ System.out.print("Ju lutemi vendosni orën e dytë:");
+ String koha2=in.next();
+ int ora2=Integer.parseInt(koha2.substring(0,2));
+ int min2=Integer.parseInt(koha2.substring(2,4));
+
+// System.out.println(ora2);
+// System.out.println(min2);
+
+if(ora1>ora2){
+    int diferenca_ore1=ora1-ora2;
+    int diferenca_min1=min1-min2;
+    if(diferenca_min1<0){
+        diferenca_min1 = diferenca_min1 + 60;
+        ora1--;
+    }
+    System.out.println(diferenca_ore1+" ore "+diferenca_min1+" min");
+}else{
+    int diferenca_ore2=ora2-ora1;
+    int diferenca_min2=min2-min1;
+    if(diferenca_min2<0){
+        diferenca_min2 = diferenca_min2 + 60;
+        ora2--;
+    }
+    System.out.println(diferenca_ore2+" ore "+diferenca_min2+" min");
+}
+    }
+}
