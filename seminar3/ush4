@@ -1,1 +1,8 @@
+/*
+Ndërtoni një program i cili lexon nga përdoruesi tre numra dhe afishon dy çifte nëse gjenden dy
+cifte që përputhen dhe jo dy çifte në të kundërt. Për shembull:
 
+1 2 2 1 Dy çifte
+1 2 2 3 Jo çifte
+2 2 2 2 Dy çifte
+*/
