@@ -1,3 +1,20 @@
+/*
+Ndërtoni një program që transformon numrat 1,2,3,.....,12 në emrat korresponues Janar, Shkurt,
+Mars, ....., Dhjetor. Ndihmesë: ndërtoni një string shumë të gjatë “Janar Shkurt Mars ......” në të
+cilin jut ë vendosni hapësira në mënyrë të tillë që një emër muaji të ketë të njëjtën gjatësi. Më pas
+përdorni metodën substring për të ekstraktuar muajin që dëshironi.
+*/
+
+/*
+Do lexoj nje numer.Do krijoj nje string,i cili i ka te shkruajtura te gjitha emrat e muajve.
+Do kontrrolloj nese nr i dhene nga perdoruesi i korrespondon numrave nga 1-12.(if)
+Do trajtoj cdo emer muaji ne string si emer me vete,duke percaktuar indekset, (int fillim,int fund;)
+per ta bere kete na ndihmojne hapsirat qe ndajne cdo emer te muajit.
+fillimi =0; //pra aty ku fillon vete stringu.
+fundi=string.indexOf(" ",fillimi); //Keshtu do kerkoj hapsiren e do ta zevendesoj,si index te fillimit;
+*/
+
+
 import java.util.Scanner;
 public class HelloPrinter {
     public static void main(String[] args) {
@@ -13,10 +30,11 @@ public class HelloPrinter {
         if (nr >= 1 && nr < 12) {
             // Gjej fillimin dhe fundin e substring-ut për emrin e muajit
             int fillimi = 0;
-            int fundi = emratMuajve.indexOf(" ", fillimi);
+            int fundi = emratMuajve.indexOf(" ", fillimi);   
+         //Keshtu do kerkoj hapsiren e do ta zevendesoj,si index te fillimit;
 
             for (int i = 1; i < nr; i++) {
-                fillimi = fundi + 1;
+                fillimi = fundi + 1; //fillimi do te jete 
                 fundi = emratMuajve.indexOf(" ", fillimi);
             }
 
@@ -27,7 +45,6 @@ public class HelloPrinter {
             System.out.println("Muaji i " + nr + "-të eshte: " + emriMuajit);
         } else if(nr==12){
             System.out.println("Muaji i 12-të eshte:Dhjetori");
-
         }else{
             System.out.println("Numri nuk është në rangun e vlefshmërisë.");
         }
