@@ -1,0 +1,26 @@
+/*
+Ndërtoni një program që lexon një numër të plotë pozitiv ose negativ dhe kontrollon sa shifra
+numri ka duke kontrolluar nëse numri >=10, >=100 e kështu me rradhë deri kur numri të jetë më i
+madh se 100000.
+*/
+import java.util.Scanner;
+public class HelloPrinter {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Jepni nje numer te plote:");
+        if (in.hasNextInt()){
+            int nr = Math.abs(in.nextInt());
+            if (nr <= 9) {
+                System.out.print("Numri ka 1 shifer.");
+            } else if (nr >= 10 && nr <= 99) {
+                System.out.print("Numri ka 2 shifra.");
+            } else if (nr >= 100 && nr <= 999) {
+                System.out.print("Numri ka 3 shifra.");
+            } else {
+             System.out.println("Numri ka me shume se 3 shifra.");
+            }
+        }else{
+            System.out.println("Numri nuk eshte i plote.");
+        }
+    }
+}
