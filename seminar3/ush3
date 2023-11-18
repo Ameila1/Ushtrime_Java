@@ -1,1 +1,22 @@
+/*
+Ndërtoni një program që lexon nga përdoruesi tre numra dhe kontrollon nëse numrat janë në
+rendin zbritës, rendin rritës, ose asnjëra nga alternativat.
+*/
+import java.util.Scanner;
+public class HelloPrinter {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+       System.out.print("Jepni 3 numra:");
+       int a=in.nextInt();
+        int b=in.nextInt();
+        int c=in.nextInt();
+       if(a>b && b>c){
+           System.out.print("Numrat jane ne rendin zbrites.");
+       }else if(a<b && b<c){
+           System.out.print("Numrat jane ne rendin rrites.");
+       }else{
+           System.out.print("Asnjera nga alternativat.");
+       }
 
+    }
+}
