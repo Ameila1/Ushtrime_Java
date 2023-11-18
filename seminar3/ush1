@@ -1,1 +1,17 @@
-
+/*Ndërtoni një program që lexon një numër të plotë dhe afishon nëse numri është pozitiv, negative
+ose i barabartë me zero. Përdorni if të kushtëzuar.
+*/
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Jepni nje numer te plote: ");
+        if (in.hasNextInt()) {
+            int nr = in.nextInt();
+           String rez=(nr>0)?"Numri eshte pozitiv.":((nr<0)?"Numri eshte negativ.":"Numri eshte i barabarte me 0.");
+            System.out.println(""+rez);
+        } else {
+            System.out.print("Nuk eshte dhene nje numer i plote.");
+        }
+    }
+}
