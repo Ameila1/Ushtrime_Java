@@ -1,1 +1,35 @@
+import java.util.Scanner;
+public class HelloPrinter {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
 
+        System.out.print("Jepni një numër për muajin (1-12): ");
+        int nr = in.nextInt();
+
+        // Krijo një string të gjatë me emrat e muajve
+        String emratMuajve = "Janar Shkurt Mars Prill Maj Qershor Korrik Gusht Shtator Tetor Nentor Dhjetor";
+
+        // Kontrollo nëse numri është brenda kufirit të vlefshmërisë
+        if (nr >= 1 && nr < 12) {
+            // Gjej fillimin dhe fundin e substring-ut për emrin e muajit
+            int fillimi = 0;
+            int fundi = emratMuajve.indexOf(" ", fillimi);
+
+            for (int i = 1; i < nr; i++) {
+                fillimi = fundi + 1;
+                fundi = emratMuajve.indexOf(" ", fillimi);
+            }
+
+            // Përdor substring për të ekstraktuar emrin e muajit për numrin e dhënë
+            String emriMuajit = emratMuajve.substring(fillimi, fundi);
+
+            // Shfaq emrin e muajit
+            System.out.println("Muaji i " + nr + "-të eshte: " + emriMuajit);
+        } else if(nr==12){
+            System.out.println("Muaji i 12-të eshte:Dhjetori");
+
+        }else{
+            System.out.println("Numri nuk është në rangun e vlefshmërisë.");
+        }
+    }
+}
