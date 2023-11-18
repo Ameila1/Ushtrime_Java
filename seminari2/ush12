@@ -12,8 +12,12 @@ Do trajtoj cdo emer muaji ne string si emer me vete,duke percaktuar indekset, (i
 per ta bere kete na ndihmojne hapsirat qe ndajne cdo emer te muajit.
 fillimi =0; //pra aty ku fillon vete stringu.
 fundi=string.indexOf(" ",fillimi); //Keshtu do kerkoj hapsiren e do ta zevendesoj,si index te fillimit;
+NE VETE VETE KEMI 4 RASTE KERKIMI
+1)KUR NR=1
+2)KUR NR:2-11
+3)KUR NR=12
+4)KUR PERDORUESI KA DHEN NJE VLERE JASHTE [1,12]
 */
-
 
 import java.util.Scanner;
 public class HelloPrinter {
@@ -23,18 +27,23 @@ public class HelloPrinter {
         System.out.print("Jepni një numër për muajin (1-12): ");
         int nr = in.nextInt();
 
-        // Krijo një string të gjatë me emrat e muajve
-        String emratMuajve = "Janar Shkurt Mars Prill Maj Qershor Korrik Gusht Shtator Tetor Nentor Dhjetor";
+// Krijo një string të gjatë me emrat e muajve
+         String emratMuajve = "Janar Shkurt Mars Prill Maj Qershor Korrik Gusht Shtator Tetor Nentor Dhjetor";
+// Kontrollo nëse numri është brenda kufirit të vlefshmërisë
 
-        // Kontrollo nëse numri është brenda kufirit të vlefshmërisë
-        if (nr >= 1 && nr < 12) {
-            // Gjej fillimin dhe fundin e substring-ut për emrin e muajit
-            int fillimi = 0;
-            int fundi = emratMuajve.indexOf(" ", fillimi);   
-         //Keshtu do kerkoj hapsiren e do ta zevendesoj,si index te fillimit;
+             if (nr >= 1 && nr < 12) {
+// Gjej fillimin dhe fundin e substring-ut për emrin e muajit
+             int fillimi = 0;                                
+//Keshtu do kerkoj hapsiren e do ta zevendesoj,si index te fillimit;
+              int fundi = emratMuajve.indexOf(" ", fillimi);   
+//nqs nr=1 ne nuk do te futemi te cikli for,pasi i=1;i<nr 1<1!!!!!!
 
-            for (int i = 1; i < nr; i++) {
-                fillimi = fundi + 1; //fillimi do te jete 
+           for (int i = 1; i < nr; i++) {
+
+ //fillimi do te jete indexsi i pare pas hapsires boshe
+                fillimi = fundi + 1;    
+
+//fundi kerkon hapsiren e rradhes boshe per ta kthyer ne fillim,per stringun e dyte.
                 fundi = emratMuajve.indexOf(" ", fillimi);
             }
 
@@ -50,3 +59,21 @@ public class HelloPrinter {
         }
     }
 }
+
+/*
+//PJESA E RENDESISHME E KODIT PA SHPJEGIME
+ if (nr >= 1 && nr < 12) {
+            int fillimi = 0;
+            int fundi = emratMuajve.indexOf(" ", fillimi);
+            for (int i = 1; i < nr; i++) {
+                fillimi = fundi + 1;
+                fundi = emratMuajve.indexOf(" ", fillimi);
+            }
+            String emriMuajit = emratMuajve.substring(fillimi, fundi);
+            System.out.println("Muaji i " + nr + "-të eshte: " + emriMuajit);
+        } else if(nr==12){
+            System.out.println("Muaji i 12-të eshte:Dhjetori");
+        }else{
+            System.out.println("Numri nuk është në rangun e vlefshmërisë.");
+        }
+*/
