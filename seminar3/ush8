@@ -1,1 +1,45 @@
+/*
+Kur dy orë janë duke u krahasuar me njëra tjetrën, sipas formatit ushtarak, në orë dhe minuta,
+preudokodi i mëposhtëm përcakton se cila prej orëve vjen përpara tjetrës.
+If ora1 < ora2
+koha1 vjen perpara.
+Else if ora1 dhe ora2jane njesoj
+If minuta1 < minuta2
+koha1 vjen perpara.
+Else if minuta1 dhe minuta2jane njesoj
+koha1 dhe koha2jane njesoj.
+Else
+koha2 vjen perpara.
 
+Else
+koha2 vjen perpara.
+*/
+
+//NJE ZGJIDHJE NGA UNE.
+
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+  System.out.println("Jepni oren e pare:");
+  String ora1=in.next();
+  System.out.println("Jepni oren e dyte:");
+  String ora2=in.next();
+  String ora11=ora1.replace(":","");
+  String ora22=ora2.replace(":","");
+  int n1=Integer.parseInt(ora11);
+  int n2=Integer.parseInt(ora22);
+  if(n1<n2){
+      System.out.println(""+ora1);
+      System.out.println(""+ora2);
+  }else if(n2<n1){
+      System.out.println(""+ora2);
+      System.out.println(""+ora1);
+  }else if(n1==n2){
+      System.out.println("Jane njesoj.");
+  }else{
+      System.out.println("Ke dhene karaktere Gabim.");
+  }
+    }
+}
