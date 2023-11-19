@@ -10,7 +10,7 @@ public class Main {
         Scanner in = new Scanner(System.in);
         System.out.print("Jepni nje karakter:");
         char karakter=in.next().charAt(0); //leximi i nje karakteri
-        karakter=Character.toUpperCase(karakter); 
+        karakter=Character.toUpperCase(karakter); //kujdes po ta kishim string do te ishte String emri=emri.toUpperCase();
         if(Character.isLetter(karakter)){
             if(karakter=='A'||karakter=='E'|| karakter=='I'|| karakter=='Y'||karakter=='U'|| karakter=='O'){
                 System.out.print("Karakteri eshte zanore");
