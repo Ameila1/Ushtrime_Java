@@ -1,0 +1,34 @@
+/*
+Shkruani një program që lexon emrin dhe pagën për orë të një punonjësi. Më pas kërkon orët e
+punuara javën e kaluar dhe llogarisni pagesën. Çdo punë jashtë orarit (mbi 40 orë për javë)
+paguhet me 150 % të pagës së rregullt.
+*/
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        //leximi i inputeve
+       System.out.print("Jepni emrin: ");
+       String emri=in.next();
+       System.out.print("Jepni pagen per nje ore: ");
+       double paga=in.nextDouble();
+       System.out.print("Jepni oret e punuara javen e kaluar: ");
+       double ore_pune=in.nextDouble();
+       
+       double pagesa=0.0;       //na duhet per llogaritjen e pagese
+       double pagesa2;          //na duhet per te llogaritu pagen e oreve shtese
+        if(ore_pune>=1 && ore_pune<=40){
+            pagesa=ore_pune*paga;
+        System.out.print(emri+" ju do te paguheni: "+pagesa);
+        }else if(ore_pune>40){
+            double oret_shtese=ore_pune-40;
+            pagesa2=oret_shtese*((1.5*paga)+paga);
+            pagesa=(40*paga)+pagesa2;    //!!!!!!!!KUJDESSS!!!!!!!
+            System.out.print(emri+" ju do te paguheni: "+pagesa+" leke.");
+        }else{
+          System.out.print("Gabim ne dhenien e inputeve.");
+    }
+
+}
+}
