@@ -1,1 +1,36 @@
-
+/*Ndërtoni një program që llogarit taksën sipas skedës së mëposhtme.*/
+import java.util.Scanner;
+public class Main{
+    public static void main(String[] args){
+ Scanner in=new Scanner(System.in);
+  System.out.print("Jepni statusin tuaj(single ose married):");
+  String status=in.next();
+  System.out.print("Jepni te ardhurat: ");
+  double te_ardhurat=in.nextDouble();
+  double tax=0.0;
+  if(status.equals("single")){
+      if(te_ardhurat>0 && te_ardhurat<8000){
+          tax=0.1*te_ardhurat;
+      }else if(te_ardhurat>8000 && te_ardhurat<32000){
+          tax=(800+0.15)*te_ardhurat;
+      }else if(te_ardhurat>32000){
+          tax=(4400+0.25)*32000;
+      }else{
+          System.out.print("Te dhenat jane gabim.");
+      }
+  }else if(status.equals("married")){
+      if(te_ardhurat>0 && 16000>te_ardhurat){
+          tax=te_ardhurat*0.1;
+      }else if(te_ardhurat>16000 && te_ardhurat<64000){
+          tax=(1600+0.15)*te_ardhurat;
+      } else if (te_ardhurat>6400) {
+          tax=(8800+0.25)*te_ardhurat;
+      }else{
+          System.out.print("Te dhenat jane gabim.");
+      }
+  }else{
+      System.out.print("Te dhenat jane gabim.");
+  }
+  System.out.print("Taksa sipas te ardhurave: "+tax);
+    }
+}
