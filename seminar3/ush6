@@ -1,0 +1,32 @@
+
+import java.util.Scanner;
+
+public class HelloPrinter {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        System.out.print("Ju lutem jepni tre numra: ");
+        double numri1 = in.nextDouble();
+        double numri2 = in.nextDouble();
+        double numri3 = in.nextDouble();
+
+        double numriMaksimal = numri1;
+
+        if (numri2 > numriMaksimal) {
+            numriMaksimal = numri2;
+        }
+
+        if (numri3 > numriMaksimal) {
+            numriMaksimal = numri3;
+        }
+
+        if (numriMaksimal % 1 == 0) {
+            // Numri më i madh është integer
+            int numriMaksimalInt = (int) numriMaksimal;
+            System.out.println("Numri më i madh është: " + numriMaksimalInt);
+        } else {
+            // Numri më i madh nuk është integer
+            System.out.println("Numri më i madh është: " + numriMaksimal);
+        }
+    }
+}
