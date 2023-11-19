@@ -1,0 +1,46 @@
+/*
+ATM kërkon PIN për tu identifikuar dhe aksesuar llogarinë. Nëse përdoruesi vendos një PIN të
+gabuar më shumë se 3 herë, ATM do të bllojë kartën. Supozoni që PIN i përdoruesit është 1234.
+Ndërtoni një program që pyet përdoruesin për PIN jo më shumë se 3 herë. Nëse përdoruesi
+vendos PIN-in e saktë do të afishohet “PIN është i saktë” dhe programi do të përfundojë. Nëse
+përdoruesi vendos një PIN të gabuar, do të afishohet “PIN jo i saktë” dhe nëse përdoruesi ka
+vendosur PIN jo më shumë se 3 herë mund ta vendosi PIN përsëri. Nëse përdoruesi ka vendosur
+një PIN të gabuar tre herë, të afishohet mesazhi “Karta juaj është bllokuar”.
+*/
+
+
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int pin = 1234;
+        int tentativa = 0;
+        System.out.print("Per te aksesuar llogarin vendosni PIN-in e kartes:");
+
+        if (in.hasNextInt()) {
+            int p = in.nextInt();
+            tentativa++;
+            if (p == pin) {
+                System.out.print("PIN-i eshte i sakte");
+            } else {
+                while (p != pin && tentativa < 3) {
+                    System.out.print("Tentativ e gabuar,jeni ne tentativen e" + (tentativa + 1) + "Provojeni serisht.");
+                    p = in.nextInt();
+                    tentativa++;
+                    if (tentativa==3 && p!=pin) {
+                        System.out.print("Karta juaj eshte bllokuar(Kishit ne dispozicion 3-alternativa).");
+                    }else if(p==pin){
+                        System.out.print("PIN-i eshte i sakte");
+                        break;
+                    }
+                }
+
+            }
+        }else{
+            System.out.print("E dhene jo e sakte.");
+        }
+
+
+    }
+}
