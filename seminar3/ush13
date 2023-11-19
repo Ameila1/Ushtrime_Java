@@ -5,6 +5,7 @@ përdoruesi fut të dhënat NO, N, JO afisho Përfundim. Përndryshe afisho inpu
 nuk duhet të bëjë dallim në shkronja të vogla apo të mëdha të përdoruesit. Shembull jo është
 ekuivalente me JO.
 */
+//metode me e mire do e ishte konfirmimi.equalsIgnoreCase("Sigurisht");
 
 import java.util.Locale;
 import java.util.Scanner;
@@ -14,7 +15,7 @@ public class Main {
 
         System.out.print("Deshironi te vazhdoni?");
         String konfirmimi=in.next().toUpperCase();
-        if(konfirmimi.equals("YES")||konfirmimi.equals("Y")||konfirmimi.equals("PO")||konfirmimi.equals("OK")|| konfirmimi.equals("Sigurisht")){
+        if(konfirmimi.equals("YES")||konfirmimi.equals("Y")||konfirmimi.equals("PO")||konfirmimi.equals("OK")|| konfirmimi.equalsIgnoreCase("Sigurisht")){
             System.out.print("OK!");
         }else if(konfirmimi.equals("NO")||konfirmimi.equals("N")||konfirmimi.equals("JO")){
             System.out.print("Perfundim!");
