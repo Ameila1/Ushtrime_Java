@@ -25,7 +25,7 @@ public class HelloPrinter {
             numriMaksimal = numri3;
         }
 
-        if (numriMaksimal % 1 == 0) {
+        if (numriMaksimal % 1 == 0) {   //numriMaksimal % 1 == 0 është një mënyrë për të verifikuar nëse numri numriMaksimal është integer. 
             // Numri më i madh është integer
             int numriMaksimalInt = (int) numriMaksimal;
             System.out.println("Numri më i madh është: " + numriMaksimalInt);
