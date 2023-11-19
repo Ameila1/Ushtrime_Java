@@ -1,1 +1,43 @@
+/*
+Shkruani një program i cili pasi lexon tre Stringje i afishon ato të renditur sipas krahasimit leksikor.
 
+Ju lutem jepni tre stringje:
+Charlie
+Able
+Baker
+Inputet e renditur janë:
+Able
+Baker
+Charlie
+*/
+import java.util.Scanner;
+
+public class alba {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+    System.out.print("Jepni 3 emra(string): ");
+    String emri1=in.next();
+    String emri2=in.next();
+    String emri3=in.next();
+    String tmp;
+    if(emri1.compareTo(emri2)>0){
+        tmp=emri1;
+        emri1=emri2;
+        emri2=tmp;
+    }
+    if(emri1.compareTo(emri3)>0){
+        tmp=emri1;
+        emri1=emri3;
+        emri3=tmp;
+    }
+    if(emri2.compareTo(emri3)>0){
+        tmp=emri2;
+        emri2=emri3;
+        emri3=tmp;
+    }
+    System.out.println("Emrat e renditur sipas krahasimit leksikor.");
+    System.out.println(emri1);
+    System.out.println(emri2);
+    System.out.println(emri3);
+    }
+}
