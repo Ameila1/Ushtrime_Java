@@ -1,1 +1,25 @@
+/*
+Ndërtoni një program që kërkon nga përdoruesi një karakter nga alfabeti dhe më pas afishon nëse
+inputi është zanore apo bashkëtingëllore. Nëse inputi nuk është një shkronjë të afishohet mesazh
+gabimi. Përdorni metodën isLetter të klasës Character.
+*/
+import java.util.Scanner;
 
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Jepni nje karakter:");
+        char karakter=in.next().charAt(0); //leximi i nje karakteri
+        karakter=Character.toUpperCase(karakter); 
+        if(Character.isLetter(karakter)){
+            if(karakter=='A'||karakter=='E'|| karakter=='I'|| karakter=='Y'||karakter=='U'|| karakter=='O'){
+                System.out.print("Karakteri eshte zanore");
+            }else{
+                System.out.print("Karakteri eshte bashketingellore");
+            }
+        }else{
+            System.out.println("Karakteri eshte dhene gabim.");
+        }
+
+    }
+}
