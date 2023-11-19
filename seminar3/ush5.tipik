@@ -11,9 +11,9 @@ public class alba{
     public static void main(String[] args){
         Scanner in=new Scanner(System.in);
         System.out.print("Jepni noten: ");
-        String nota=in.next().toUpperCase();
-        double vlera=0.0d;
-      switch(nota.charAt(0)){
+        String nota=in.next().toUpperCase();  //nuk ka rendesi nese inputi qe marrim eshte A apo a.
+        double vlera=0.0d;                    //kujdes kemi tip double pasi kemi shtim,heqje me 0.3
+      switch(nota.charAt(0)){                //kontrollojme pjesen e pare te Stringut.
           case 'A':
               vlera=4.0;
           break;
@@ -30,8 +30,8 @@ public class alba{
               vlera=0.0;
               break;
       }
-        if (nota.length() > 1) {
-            char shenja = nota.charAt(1);
+        if (nota.length() > 1) {           //kontrrollojme ne qoftese kemi nje string me te madhe se nje karakter,pra nqs kemi A+,B+,A- etj
+            char shenja = nota.charAt(1);   //nqs eshte me e madhe se nji karakter deklarojme nje variabel char
             if (shenja == '+') {
                 if (nota.charAt(0) != 'A' && nota.charAt(0) != 'F') {
                     vlera += 0.3;
