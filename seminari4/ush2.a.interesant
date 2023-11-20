@@ -13,7 +13,7 @@ public class Main {
         System.out.print("Jepni numrat: ");
         int[] numrat=new int[n];
         int shuma=0;
-        int[] shumat=new int[n];
+        int[] shumat=new int[n]; //krijoj nje vektor te ri per te marr shumen e elementeve.
         for(int i=0;i<n;i++){
             numrat[i]=in.nextInt();
         }
