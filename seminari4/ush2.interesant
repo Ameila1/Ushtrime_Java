@@ -1,0 +1,23 @@
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Sa eshte sasia e numrave qe do te jepni input: ");
+        int n = in.nextInt();
+        System.out.print("Jepni numrat: ");
+        int[] numrat=new int[n];
+        int shuma=0;
+        int[] shumat=new int[n];
+        for(int i=0;i<n;i++){
+            numrat[i]=in.nextInt();
+        }
+        for(int i=0;i<n;i++){
+            shuma=shuma+numrat[i];
+            shumat[i]=shuma;
+        }
+        for(int i=0;i<n;i++){
+            System.out.print(shumat[i]+" ");
+        }
+    }
+}
