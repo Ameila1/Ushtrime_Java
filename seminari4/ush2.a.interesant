@@ -1,8 +1,13 @@
+Shkruani një program që lexon një sekuencë numrash të plotë dhe afishon:
+a. Shumën e numrave në seri si në shembullin e mëposhtëm
+Nëse inputi është 1 7 2 9 programi duhet të afishojë 1 8 10 19
+
 
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
+
         System.out.print("Sa eshte sasia e numrave qe do te jepni input: ");
         int n = in.nextInt();
         System.out.print("Jepni numrat: ");
