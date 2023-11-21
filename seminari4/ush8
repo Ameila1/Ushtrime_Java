@@ -1,0 +1,20 @@
+/*
+Ndërtoni një program që lexon një fjalë nga përdoruesi dhe më pas afishon fjalën mbrapsht.
+Përshembull nëse përdoruesi jep fjalën Harry programi do të afishojë yrraH.
+*/
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args){
+        Scanner in=new Scanner(System.in);
+        System.out.print("Jepni nje fjale: ");
+       String fjala=in.next();
+       String fjala_rev="";
+       for(int i=fjala.length()-1;i>=0;i--){
+           char karakteri=fjala.charAt(i);
+           fjala_rev=fjala_rev+karakteri;
+       }
+       System.out.println("Fjala mbrapsht: "+fjala_rev);
+
+    }
+}
