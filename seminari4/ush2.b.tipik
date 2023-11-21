@@ -22,7 +22,7 @@ public class Main {
        }
            for(int i=0;i<n;i++){
                count++;
-                   for(int j=i+1;j<n;j++){
+                   for(int j=i+1;j<n;j++){   //edhe po e hoqa &&i!=j programi ekzekutohet pa gabime.
                      if(numrat[i]==numrat[j] && i!=j){
                      count=count+1;
                      tabel[j]=-1;
