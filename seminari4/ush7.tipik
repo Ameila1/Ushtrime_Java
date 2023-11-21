@@ -1,0 +1,27 @@
+/*
+Ndërtoni një program i cili pasi merr një fjalë nga përdoruesi përcakton nëse fjala është
+palindrome ose jo.
+*/
+
+import java.util.Scanner;
+public class alba {
+    public static void main(String[] args){
+        Scanner in=new Scanner(System.in);
+        System.out.print("Jepni nje fjale: ");
+        String fjala=in.next().toLowerCase();
+        String fjala_rev="";
+        for(int i=fjala.length()-1;i>=0;i--){
+            char karakteri=fjala.charAt(i);
+            System.out.print(karakteri);
+            fjala_rev=fjala_rev+karakteri;
+        }
+        System.out.println();
+        if(fjala.equalsIgnoreCase(fjala_rev)){
+            System.out.println("Fjala eshte palindrome.");
+        } else {
+            System.out.println("Fjala nuk eshte palindrome.");
+        }
+
+
+    }
+}
