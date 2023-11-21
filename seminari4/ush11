@@ -1,1 +1,33 @@
+/*Ndërtoni një program që kërkon nga përdoruesi një numër të plotë dhe më pas afishon të gjithë
+faktorët e tij. Për shembull nëse përdoruesi vendos numrin 150 programi do të afishojë
 
+2
+3
+5
+5*/
+import java.util.Scanner;
+public class Main{
+    public static void main(String[] args){
+        Scanner in=new Scanner((System.in));
+        System.out.print("Jepni nje numer:");
+
+        int nr=in.nextInt();
+        for(int i=2;i<=nr;i++){   
+            while(nr%i==0){
+                System.out.print(" "+i);
+                nr=nr/i;
+            }
+        }
+//nqs vete nr eshte faktor i thjeshte i vetes,pra nr eshte me i madh se 2 dhe nuk ka faktor te tjere
+        if(nr>2){
+            System.out.print(" "+nr);
+        }
+    }
+}
+
+/*
+Kam nje numer.
+Do e kontrolloj me ke plotepjestohet nga numrat i=2;i<=nr 
+nqs ndodh plotepjestimi bej afishimin dhe nr=nr/i;
+bej dhe nje if per rastin e vecant te siper permendur;
+*/
