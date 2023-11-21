@@ -1,1 +1,41 @@
+Ndërtoni një program që lexon numra dhjetorë nga përdoruesi dhe më pas i afishon përdoruesit
+mesataren dhe vlerën më të vogël dhe më të madhe.
+*/
 
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Sa numra do te jepni:");
+        int nr = in.nextInt();
+        System.out.print("Jepni numrat: ");
+        if (in.hasNextDouble()) {
+            double[] numrat = new double[nr];
+            double shuma = 0.0;
+            double max, min;
+            for (int i = 0; i < nr; i++) {
+                numrat[i] = in.nextInt();
+            }
+            for (int i = 0; i < nr; i++) {
+                shuma = shuma + numrat[i];
+            }
+            double mesatarja = shuma / nr;
+            max = numrat[0];
+            for (int i = 0; i < nr; i++) {
+                if (max < numrat[i]) {
+                    max = numrat[i];
+                }
+            }
+            min = numrat[0];
+            for (int i = 0; i < nr; i++) {
+                if (min > numrat[i]) {
+                    min = numrat[i];
+                }
+            }
+            System.out.println("Mesatarja:" + mesatarja);
+            System.out.println("Max:" + max);
+            System.out.println("Min:" + min);
+
+        }
+    }
+}
