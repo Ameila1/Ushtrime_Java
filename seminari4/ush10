@@ -1,0 +1,30 @@
+/*
+Numrat Fibonaci përcaktohen sipas sekuencës
+F1 = 1
+F2 = 1
+Fn = fn-1 + fn-2
+Ndërtoni një program që merr nga përdoruesi një numër n dhe afishon n numrat e Fibonacit duke
+përdorur algoritmin e mësipërm.
+*/
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args){
+        Scanner in=new Scanner(System.in);
+
+        System.out.print("Vendosni sasine e numrave qe do te jepni: ");
+        int n=in.nextInt();
+        int a=1;
+        int b=1;
+        int c;
+        System.out.print(a+" "+b+" ");
+        for(int i=2;i<n;i++){
+            c=a+b;
+            System.out.print(c+" ");
+            a=b;
+            b=c;
+        }
+
+
+    }
+}
