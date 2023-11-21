@@ -4,7 +4,7 @@ palindrome ose jo.
 */
 
 import java.util.Scanner;
-public class alba {
+public class Main{
     public static void main(String[] args){
         Scanner in=new Scanner(System.in);
         System.out.print("Jepni nje fjale: ");
