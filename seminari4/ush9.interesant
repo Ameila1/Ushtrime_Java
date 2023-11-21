@@ -1,0 +1,46 @@
+/*
+Ndërtoni një program që lexon një fjalë dhe afishon të gjitha substringjet e fjalëve të renditura
+sipas gjatësisë. Për shembull nëse përdoruesi vendos fjalën “rum”, programi do të afishojë
+
+r
+u
+m
+ru
+um
+rum
+*/
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args){
+        Scanner in=new Scanner(System.in);
+        System.out.print("Jepni nje string: ");
+        String fjala=in.next();
+        int n=fjala.length();
+ for(int i=1;i<=n;i++){
+     for(int j=0;j<=n-i;j++){
+         System.out.println(" "+fjala.substring(j,j+i));
+     }
+ }
+
+    }
+}
+/*
+Ami:             //Gjithsej programi do te ekzekutohet aq here sa eshte gjatesia e stringut for(int i=0;i<=n;i++)
+   ! #              //dhe per cdo here shoh qe me ndryshon perseritja.
+A  0,1     *     cikli:0,1,2;  Shoh qe perseritet 3-here.                    
+m  1,2     *     pjesa e pare me ! larte eshte brenda nje cikli,qe i bie eshte nje cikel i brendshem,fillon perher nga 0 dhe rritet
+i  2,3     *     pjesa e dyte me # larte eshte e ciklit te pare,prandaj cikli i pare vazhdon me 1 dhe jo me 0;  
+Am 0,2     x     cikli:0,1;   Shoh qe perseritet 2-here.
+im 1,3     x
+Ami 0,3    #     cilki:0;    Shoh qe perseritet 1 here.
+
+i=1  A         *   3->*    //numri i ekzekutimeve me i madh
+     m         *   nr i karaktereve=3;                                                                   Per shkak te indekseve:
+     i         *   fjala.length()-i;=>3-1=2 !!kujdes nuk ekzekutohet dy here se cikili i dyte nis nga 0;    0   1   2    
+i=2  Am        x   2->x
+     mi        x   fjala.length()-i;=>3-2=1                                                                 0    1
+i=3  Ami       #   1->3   //numri i ekzekutimeve me i vogel
+                   fjala.length()-i;=>3-3=0                                                                 0
+*/
+
