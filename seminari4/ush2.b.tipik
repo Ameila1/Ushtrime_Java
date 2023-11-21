@@ -1,0 +1,46 @@
+/*
+Shkruani një program që lexon një sekuencë numrash të plotë dhe afishon:
+a. Shumën e numrave në seri si në shembullin e mëposhtëm
+Nëse inputi është 1 7 2 9 programi duhet të afishojë 1 8 10 19
+b. Vlerat që përsëriten për shembull nëse inputi është 1 3 3 4 5 5 6 6 6 2, programi do të
+afishojë 3 5 6
+*/
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+       System.out.print("Jepni sasine e sekuences se numrave: ");
+       int n=in.nextInt();
+       int[] numrat=new int[n];
+       int[] tabel=new int[n];
+       int count=0;
+     
+       System.out.print("Jepni numrat: ");
+       for(int i=0;i<n;i++){
+           numrat[i]=in.nextInt();
+       }
+           for(int i=0;i<n;i++){
+               count++;
+                   for(int j=i+1;j<n;j++){
+                     if(numrat[i]==numrat[j] && i!=j){
+                     count=count+1;
+                     tabel[j]=-1;
+                                              }
+                                         }
+               if(count>=2){
+                if(tabel[i]!=-1){
+                System.out.print(numrat[i]+" ");
+                 }
+                          }
+       }
+
+
+
+    }
+}
+/* 1 2  2 3  3 4  3
+   1 2 -1 3 -1 4 -1   me ben qe mos te numeroj dy here vlerat e perseritura
+   x 2 x 3  x  x x    ikin si vlera nga kushtet qe count<=2 ,ikin numrat qe perseriten 1 here,dhe vlerat e perseritura nga t[i]!=-1;
+
+*/
