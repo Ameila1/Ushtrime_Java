@@ -37,10 +37,10 @@ Ami 0,3    #     cilki:0;    Shoh qe perseritet 1 here.
 
 i=1  A         *   3->*    //numri i ekzekutimeve me i madh
      m         *   nr i karaktereve=3;                                                                   Per shkak te indekseve:
-     i         *   fjala.length()-i;=>3-1=2 !!kujdes nuk ekzekutohet dy here se cikili i dyte nis nga 0;    0   1   2    
-i=2  Am        x   2->x
-     mi        x   fjala.length()-i;=>3-2=1                                                                 0    1
-i=3  Ami       #   1->3   //numri i ekzekutimeve me i vogel
-                   fjala.length()-i;=>3-3=0                                                                 0
+     i         *   fjala.length()-i;=>3-1=2 !!kujdes nuk ekzekutohet dy here se cikili i dyte nis nga 0; j:0   1   2               fjala.substring(j,dicka);
+i=2  Am        x   2->x                                                                                                          (0,1);(1,2);(2,3) numrat pas presjes vin si nr1+1
+     mi        x   fjala.length()-i;=>3-2=1                                                              j: 0    1             i=1    =>fjala.substring(j,j+1);  
+i=3  Ami       #   1->3   //numri i ekzekutimeve me i vogel                                                                    i=2    =>fjala.substring(j,j+2);  =>(j,j+i)
+                   fjala.length()-i;=>3-3=0                                                              j: 0                  i=3    =>gjala.substring(j,j+3);
 */
 
