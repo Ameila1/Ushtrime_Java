@@ -1,0 +1,42 @@
+/*
+Ndërtoni një metodë që merr si parametër një numër dhe kthen
+a. Shifrën e parë
+b. Shifrën e fundit
+c. Numrin e shifrave
+Ndërtoni programin testues të metodave.
+*/
+
+import java.util.Scanner;
+public class Main{
+    public static void main(String[] args) {
+        Scanner in = new Scanner((System.in));
+       System.out.print("Jepni 1 numer: ");
+       int nr=in.nextInt();
+       System.out.println("Shifra e pare: "+shifra_pare(nr));
+       System.out.println("Shifra e fundit: "+shifra_fundit(nr));
+       System.out.println("Numri i shifrave: "+nr_shifra(nr));
+    }
+//a)
+    public static int shifra_pare(int a) {
+        while (a >= 10) {
+             a=a/10;
+        }
+        return a;
+    }
+
+//b)
+   public static int shifra_fundit(int a){
+        return a%10;
+   }
+
+//c)
+   public static int nr_shifra(int a){
+        int count=0;
+        while(a!=0){
+            count++;
+            a=a/10;
+        }
+        return count;
+   }
+   
+  }
