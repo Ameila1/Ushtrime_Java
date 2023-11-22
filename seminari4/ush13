@@ -3,11 +3,41 @@ x x x *                3       1       1       nr=4   4-1=3     s<=nr-i
 x x * * *              2       3       2              4-2=2
 x * * * * *            1       5       3              4-3=1
 * * * * * * *          0       7       4              4-4=0
-
-
-
-
-
-
-
+ }
 */
+/*
+Ndërtoni një program që lexon një numër të plotë nga përdoruesi dhe duke përdorur yjet, shfaq
+një romb.*/
+import java.util.Scanner;
+public class Main{
+    public static void main(String[] args) {
+        Scanner in = new Scanner((System.in));
+        System.out.print("Jepni numrin: ");
+        int nr = in.nextInt();
+
+
+//PJESA LARTE
+        for(int i=1;i<=nr;i++){
+            for(int s=1;s<=nr-i;s++){
+                System.out.print(" ");
+            }
+            for(int j=1;j<=2*i-1;j++){
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+
+
+//PJESA POSHTE
+        for(int i=nr-1;i>=1;i--){      //vtm ktu ndrsh
+            for(int s=1;s<=nr-i;s++){
+                System.out.print(" ");
+            }
+            for(int j=1;j<=2*i-1;j++){
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+
+    }
+}
