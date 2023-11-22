@@ -1,1 +1,29 @@
+/*
+Ndërtoni një metodë statike që merr si parametër një String dhe kthen një String që përmban
+karakterin e mesit nëse stringu ka karaktere çift dhe kthen të dy karakteret e mesit nëse stringu ka
+karaktere tek.
+*/
 
+import java.util.Scanner;
+public class Main{
+    public static void main(String[] args) {
+        Scanner in = new Scanner((System.in));
+        System.out.print("Jepni nje string: ");
+        String fjala=in.next();
+        if(fjala.length()%2==1){
+            System.out.print("Karakteri i mesit: "+karakter(fjala));
+        }else{
+            System.out.print("Karakteret e mesit: "+karakter(fjala));
+        }
+
+  }
+
+  public static String karakter(String a){
+        int l=a.length();
+        if(l%2==0){
+            return  a.substring((l/2)-1,(l/2)+1);
+        }else{
+            return a.substring(l/2,(l/2)+1);
+        }
+  }
+}
