@@ -1,0 +1,28 @@
+/*
+Ndërtoni një metodë statike e cila kthen numrin e zanoreve në një string str.
+*/
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner((System.in));
+
+       System.out.print("Jepni nje string: ");
+       String fjala=in.next().toLowerCase();
+       System.out.print("Numri i zanoreve te stringut eshte: "+nr_zanore(fjala));
+    }
+
+
+    public static int nr_zanore(String a){
+        int count=0;
+        for(int i=0;i<a.length();i++){
+            char karakteri=a.charAt(i);
+            if( karakteri=='a' || karakteri=='e' || karakteri=='i' || karakteri=='o'|| karakteri=='u'|| karakteri=='y' ){
+                count++;
+            }
+        }
+        return count;
+    }
+
+
+}
