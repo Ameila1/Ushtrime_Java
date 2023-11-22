@@ -1,1 +1,34 @@
+/*
+8-
+Përdoni rekursionin për të implementuar një metodë public static boolean find(String str, String
+match) që teston nëse stringu match ndodhet në string.
+boolean b = find("Mississippi", "sip"); / b do të ketë vlerën true
+Nëse stringu fillon me match, atëherë programi ka përfunduar. Nëse jo, filloni përsëri kontrollonin
+duke hequr karakterin e parë në fjalë.
+*/
 
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner((System.in));
+
+        System.out.print("Jepni nje string: ");
+        String fjala = in.next();
+       System.out.print("Jepni nje string match: ");
+       String fjala2=in.next();
+      boolean ch= find(fjala,fjala2);
+      System.out.println(" "+ch);
+    }
+
+    public static boolean find(String str,String match){
+        if(str.startsWith(match)){
+            return true;
+        }
+        if(str.length()<match.length()){
+            return false;
+        }
+        String sub=str.substring(1,str.length());
+        return find(sub,match);
+    }
+
+}
