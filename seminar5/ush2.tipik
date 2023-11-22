@@ -32,9 +32,13 @@ public class Main{
 //c)
    public static int nr_shifra(int a){
         int count=0;
-        while(a!=0){
+        if(a==0){
+            count++;
+        }else{
+            while(a!=0){
             count++;
             a=a/10;
+        }
         }
         return count;
    }
