@@ -1,0 +1,31 @@
+/*
+Ndërtoni një metodë statike e cila numëron fjalët në një string str. Fjalën janë të ndara me hapësira
+ndërmjet tyre. Përdorni metodën trim() për të hequr hapësirat majtas dhe djathtas inputit dhe
+përdorni metodën isEmpty() për të kontrolluar nëse stringu është bosh ose jo.
+*/
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner((System.in));
+        System.out.print("Jepni nje string: ");
+        String fjala = in.nextLine();
+        System.out.println("Fjalet ne string: " + fjalet_ne_string(fjala));
+    }
+
+    public static int fjalet_ne_string(String s) {
+        s = s.trim();
+        int count;
+        if (s.isEmpty()) {
+            return 0;
+        } else {
+            count = 1;
+            for (int i = 0; i < s.length(); i++) {
+                char karakteri = s.charAt(i);
+                if (karakteri == ' ' && s.charAt(i + 1) != ' ') {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+}
