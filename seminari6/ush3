@@ -1,1 +1,56 @@
+/*
+3. Ndërtoni metodat e mëposhtme të cilat marrin si paramentër një tabelë dhe :
 
+b. Zëvendëson elementin e parë me të fundit
+c. Sposton të gjithë elementët në të djathtë, ndërsa elementin e fundit e vendos në fillim si
+për shembull tabela 1 4 9 16 25 do të transformohet në 25 1 4 9 16 25
+d. Heq elementin e mesit nëse numri i elementëve të tabelës është tek ose dy elementët e
+mesit nëse tabela ka numër çift elementësh
+e. Kthen numrin e dytë më të madh në tabelë
+f. Kthen true nëse tabela është e renditur në rendin rritës
+g. Kthen true nëse tabela përban dy elementë fqinjë të dublikuar
+h. Kthen true nëse tabela përmban elementë të dublikuar
+*/
+import java.util.Scanner;
+import java.util.Random;
+public class Main{
+    public static void main(String[] args){
+        Scanner in=new Scanner(System.in);
+        Random rastesisht=new Random();
+        int[] numra=new int[10];
+       for(int i=0;i< numra.length;i++){
+           numra[i]=rastesisht.nextInt(100)+1;
+       }
+       System.out.println("Vlerat e tabeles jane: ");
+       System.out.println();
+       for(int element:numra){
+           System.out.print(element+" ");
+       }
+       int tmp;
+       tmp=numra[0];
+       numra[0]=numra[numra.length-1];
+       numra[numra.length-1]=tmp;
+        System.out.println();
+       System.out.println("Vlerat e tabeles pas ndryshim te elementit te pare me te fundit jane: ");
+        for(int element:numra){
+            System.out.print(element+" ");
+        }
+        int fundi=numra[numra.length-1];
+        for(int i= numra.length-1;i>0;i--){
+            numra[i]=numra[i-1];
+        }
+        numra[0]=fundi;
+        System.out.println();
+        System.out.println("Sposton të gjithë elementët në të djathtë, ndërsa elementin e fundit e vendos në fillim : ");
+        for(int element:numra){
+            System.out.print(element+" ");
+        }
+
+            if(numra.length%2==1){
+                int mesi= numra.length/2;
+                for(int i=mesi;i< numra.length){
+
+                }
+            }
+        }
+    }
