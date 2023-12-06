@@ -1,1 +1,22 @@
+/*
+Ndërtoni një program që mbush tabelën me 10 numra të rastësishëm të ndryshëm midis 1 dhe
+100.
+*/
 
+import java.util.Scanner;
+import java.util.Random;
+public class Main{
+    public static void main(String[] args){
+    Scanner in=new Scanner(System.in);
+    //krijojme objektin e klases random
+    Random rastesisht=new Random();
+    int[] numra=new int[10];
+    for(int i=0;i<numra.length;i++){
+        numra[i]=rastesisht.nextInt(100)+1;
+        //Për shembull, nëse random.nextInt(100) kthen vlerën 0, atëherë 0 + 1 do të jetë 1.
+    }
+    for(int element:numra){
+        System.out.print(element+" ");
+    }
+   }
+}
