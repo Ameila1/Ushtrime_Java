@@ -1,1 +1,40 @@
+/*
+Ndërtoni një program që inicializon një tabelë me dhjetë elementë numra random me vlerë nga 1
+deri në 10 dhe afishon:
+a) Elementët në pozion çift
+b) Të gjithë elementët në pozicion të kundërt
+c) Elementin e parë dhe elementin e fundit
+*/
+import java.util.Scanner;
+import java.util.Random;
+public class Main{
+    public static void main(String[] args){
+        Scanner in=new Scanner(System.in);
+        Random rastesisht=new Random();
+        int[] numra=new int[10];
+        for(int i=0;i<numra.length;i++){
+           numra[i]=rastesisht.nextInt(10)+1;
+        }
+        System.out.println("Numrat jane:");
+        for(int element:numra){
+            System.out.print(" "+element);
+        }
+        System.out.println();
+        System.out.println("Numrat ne pozicoinet cift jane:");
+    for(int i=0;i<numra.length;i++){
+        if(i%2==0){
+            System.out.print(" "+numra[i]);
+        }
+    }
+  System.out.println();
+        System.out.println("Numrat e vendosur ne pozicionin e kundert jane:");
+    for(int i=numra.length-1;i>=0;i--){
+        System.out.print(" "+numra[i]);
+    }
+        System.out.println();
+    System.out.println("Elementi i pare: "+numra[0]);
+    System.out.println("Elementi i fundit: "+numra[numra.length-1]);
 
+    }
+
+}
