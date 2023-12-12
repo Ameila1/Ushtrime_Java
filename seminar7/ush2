@@ -1,0 +1,38 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+public class Main {
+    public static void main(String[] args) {
+        // Testimi i metodes merge
+        ArrayList<Integer> a = new ArrayList<>(Arrays.asList(1, 4, 9, 16));
+        ArrayList<Integer> b = new ArrayList<>(Arrays.asList(9, 7, 4, 9, 11));
+        ArrayList<Integer> mergedList = merge(a, b);
+
+        // Shfaqja e rezultatit
+        System.out.println("ArrayList e bashkuar: " + mergedList);
+    }
+
+    public static ArrayList<Integer> merge(ArrayList<Integer> a, ArrayList<Integer> b) {
+        // ArrayList e re për të mbajtur rezultatin e bashkimit
+        ArrayList<Integer> mergedList = new ArrayList<>();
+
+        // Përcakto gjatësinë minimale të dy ArrayListave
+        int minLength = Math.min(a.size(), b.size());
+
+        // Alternimi i elementeve nga dy ArrayListat
+        for (int i = 0; i < minLength; i++) {
+            mergedList.add(a.get(i));  // Shto elementin nga lista a
+            mergedList.add(b.get(i));  // Shto elementin nga lista b
+        }
+
+        // Shtimi i elementeve të mbetura nga lista më e gjatë
+        if (a.size() > b.size()) {
+            mergedList.addAll(a.subList(minLength, a.size()));//addAll-shtojme elementet ne fund te listes
+            //a.sublist-eshte nje nenlist e cila nis nga gjatesia min dhe deri te gjatesia e me te gjates.
+        } else if (b.size() > a.size()) {
+            mergedList.addAll(b.subList(minLength, b.size()));
+        }
+
+        // Kthe rezultatin e bashkimit
+        return mergedList;
+    }
+}
