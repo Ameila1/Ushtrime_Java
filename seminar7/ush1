@@ -1,1 +1,28 @@
+import java.util.Scanner;
+import java.util.Random;
+import java.util.ArrayList;
+public class Main{
+    public static void main(String[] args){
+Scanner in=new Scanner(System.in);
+Random r=new Random();
+//kam dy tavolina
+ArrayList<Integer>tabela_qe_do_afishohet=new ArrayList<>();
+ArrayList<Integer> tabela_me_numra=new ArrayList<>();
+//tavolina e pare mbushet me numra nga 1 ne 10
+for(int i=1;i<=10;i++){
+    tabela_me_numra.add(i);
+}
+//tavolina e dyte mbushet nga numrat e perzgjedhur rastesisht
+// nga tavolina e pare,ku cdo numer perseritet vetem nje here.
+for(int i=0;i<10;i++){
+    //kam 10 kuti(index) ,ku secila kuti mban nje numer,
+    // dhe nje xhaxh random qe perzgjedh kutit
+    int index=r.nextInt(tabela_me_numra.size());//tabela_me_numra.size())na jep sasin e kutive
+    int numer=tabela_me_numra.remove(index);//marrim numrin heqim kutin
+    tabela_qe_do_afishohet.add(numer);
+    }
+        System.out.println("Numrat e zgjedhur rastësisht nga 1 deri në 10:");
+        System.out.println(tabela_qe_do_afishohet);
 
+}
+}
