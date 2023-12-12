@@ -1,0 +1,53 @@
+/*
+Ndërtoni një metodë public static ArrayList<Integer> mergeSorted(ArrayList<Integer> a,
+ArrayList<Integer> b) që bashkon dy array lista të renditura, duke prodhuar një array list të re të
+renditur. Nëse a është 1 4 9 16 dhe b është 4 7 9 9 11 atëherë metoda do të kthejë 1 4 4 7 9 9 9
+11 16.
+*/
+import java.util.ArrayList;
+import java.util.Arrays;
+public class Main {
+    public static void main(String[] args) {
+        // Testimi i metodes mergeSorted
+        ArrayList<Integer> a = new ArrayList<>(Arrays.asList(1, 4, 9, 16));
+        ArrayList<Integer> b = new ArrayList<>(Arrays.asList(4, 7, 9, 9, 11));
+        ArrayList<Integer> mergedList = mergeSorted(a, b);
+
+        // Shfaqja e rezultatit
+        System.out.println("ArrayList e bashkuar dhe e renditur: " + mergedList);
+    }
+
+    public static ArrayList<Integer> mergeSorted(ArrayList<Integer> a, ArrayList<Integer> b) {
+        // ArrayList e re për të mbajtur rezultatin e bashkimit të renditur
+        ArrayList<Integer> mergedList = new ArrayList<>();
+
+        // Indekset për të ndjekur pozitat aktuale në listat a dhe b
+        int i = 0;
+        int j = 0;
+
+        // Iterimi për të krahasuar elementët dhe shtuar në mënyrë të renditur
+        while (i < a.size() && j < b.size()) {
+            if (a.get(i) < b.get(j)) {
+                mergedList.add(a.get(i));
+                i++;
+            } else {
+                mergedList.add(b.get(j));
+                j++;
+            }
+        }
+
+        // Shtimi i elementeve të mbetura nga lista më e gjatë
+        while (i < a.size()) {
+            mergedList.add(a.get(i));
+            i++;
+        }
+
+        while (j < b.size()) {
+            mergedList.add(b.get(j));
+            j++;
+        }
+
+        // Kthe rezultatin e bashkimit të renditur
+        return mergedList;
+    }
+}
