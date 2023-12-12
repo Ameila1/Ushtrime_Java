@@ -1,3 +1,38 @@
+/*
+Ndërtoni një metodë public static ArrayList<Integer> merge (ArrayList<Integer> a,
+ArrayList<Integer> b), e cila bashkon dy array lista, duke alternuar elementë nga të dy arraylistat.
+Nëse një nga arraylistat është më e vogël se tjetra, atëherë kryeni alternimet për sa kohë që është
+e mundur dhe më pas shtoni elementët e mbetur nga array lista më e gjatë. Për shembull, nëse a
+është 1 4 9 16 dhe b është 9 7 4 9 11 atëherë metoda do të kthejë array listën 1 9 4 7 9 4 16 9 11.
+*/
+import java.util.ArrayList;
+import java.util.Arrays;
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Integer> a = new ArrayList<>(Arrays.asList(1, 4, 9, 16));
+        ArrayList<Integer> b = new ArrayList<>(Arrays.asList(9, 7, 4, 9, 11));
+        ArrayList<Integer> mergedList = merge(a, b);
+        System.out.println("ArrayList e bashkuar: " + mergedList);
+    }
+
+    public static ArrayList<Integer> merge(ArrayList<Integer> a, ArrayList<Integer> b) {
+        ArrayList<Integer> mergedList = new ArrayList<>();
+        int minLength = Math.min(a.size(), b.size());
+        for (int i = 0; i < minLength; i++) {
+            mergedList.add(a.get(i));
+            mergedList.add(b.get(i));
+        }
+        if (a.size() > b.size()) {
+            mergedList.addAll(a.subList(minLength, a.size()));
+        } else if (b.size() > a.size()) {
+            mergedList.addAll(b.subList(minLength, b.size()));
+        }
+        return mergedList;
+    }
+}
+
+
+//per ta kuptu un me mire
 import java.util.ArrayList;
 import java.util.Arrays;
 public class Main {
