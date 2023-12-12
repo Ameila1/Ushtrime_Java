@@ -1,1 +1,43 @@
+/*
+Ndërtoni një metodë që modifikon një Array list me stringje, duke zhvendosur të gjitha stringjet që
+fillojnë me shkronjë të madhe në fillim, pa ndryshuar renditjen e elementëve të tjerë.
+*/
+import java.util.ArrayList;
 
+public class Main {
+    public static void main(String[] args) {
+        // Krijo një ArrayList me stringje për testim
+        ArrayList<String> stringList = new ArrayList<>();
+        stringList.add("Delja");
+        stringList.add("lopa");
+        stringList.add("macja");
+        stringList.add("Kali");
+        stringList.add("Ariu");
+
+        // Thirr metoden për modifikim
+        modifyArrayList(stringList);
+
+        // Shfaq rezultatin
+        System.out.println("ArrayList e modifikuar: " + stringList);
+    }
+
+    public static void modifyArrayList(ArrayList<String> list) {
+        // Krijoni një ArrayList të ri për të mbajtur stringjet që fillon me shkronjë të madhe
+        ArrayList<String> upperCaseStrings = new ArrayList<>();
+
+        // Loop për të zbuluar dhe zhvendosur stringjet me shkronjë të madhe në fillim
+        for (int i = 0; i < list.size(); i++) {
+            String currentString = list.get(i);
+            if (Character.isUpperCase(currentString.charAt(0))) {
+                // Shtoni në listën e re
+                upperCaseStrings.add(currentString);
+                // Fshini nga lista origjinale
+                list.remove(i);
+                i--; // Zvogëloj indeksin për shkak të fshirjes
+            }
+        }
+
+        // Shtoni stringjet me shkronjë të madhe në fillim të listës origjinale
+        list.addAll(0, upperCaseStrings);
+    }
+}
