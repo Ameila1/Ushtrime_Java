@@ -1,3 +1,37 @@
+/*
+Ndërtoni një program që vendos në array list 10 numra të rastësishëm nga 1 deri tek 10. Për të
+gjeneruar këtë, ju duhet të mbushni një tabelë me numra nga 1 deri në 10 duke pasur parasysh që
+dy vlera në tabelë nuk duhet të jenë të njëjta. Ky veprim do të bëhet derisa të gjenerohen numra
+random dhe të gjenerohet një vlerë që nuk ndodhet në tabelë. Por kjo gjë nuk është efiçiente. Për
+të realizuar kë program mund të ndiqni këtë algoritëm:
+Krijoni një tabelë të dytë më vlera nga 1 deri tek 10.
+Zgjidhni një element në mënyrë random nga tabela e dytë.
+Hiqeni elementin dhe vendoseni në tabelën me elementë të rastësishëm.
+*/
+import java.util.Scanner;
+import java.util.Random;
+import java.util.ArrayList;
+public class faqe{
+    public static void main(String[] args){
+        Scanner in=new Scanner(System.in);
+        Random r=new Random();
+        ArrayList<Integer>tabela1=new ArrayList<>();
+        ArrayList<Integer>tabela2=new ArrayList<>();
+        for(int i=1;i<=10;i++){
+            tabela2.add(i);
+        }
+        for(int i=0;i<10;i++){
+            int index=r.nextInt(tabela2.size());
+            int numer=tabela2.remove(index);
+            tabela1.add(numer);
+        }
+        System.out.println("Numrat e zgjedhur rastësisht nga 1 deri në 10:");
+        System.out.println(tabela1);
+    }
+}
+
+
+//Menyre per ta kuptuar une
 import java.util.Scanner;
 import java.util.Random;
 import java.util.ArrayList;
