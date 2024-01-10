@@ -1,1 +1,53 @@
+/*
+Ndërtoni një program i cili mbush dy array lista list1 dhe list2 derisa përdoruesi vendos -1 për të
+përfunduar. Për këtë ndërtoni një metodë që do të krijojë dy listat. Ndërtoni një metodë që merr
+si parametër list1 dhe list2 dhe kthen bashkimin e list1 me list2. Ndërtoni një metodë tjetër që
+merr si parametër list1 dhe kthen një arraylist të re që ka të njëjtat fjalë si list1 por nuk përmban
+elementët e përsëritur.
+*/
+import java.util.Scanner;
+import java.util.ArrayList;
+public class puna1{
+    public static ArrayList<String> tabel2(ArrayList<String> l3 ) {
+        ArrayList<String> list_e_re=new ArrayList<>();
 
+        for(int i=0;i<l3.size();i++){
+            for(int j=i+1;j<l3.size();j++){
+                if(l3.get(i).equals(l3.get(j))){
+                    l3.set(j,"-1");
+                }
+            }
+            if(!l3.get(i).equals("-1")){
+                list_e_re.add(l3.get(i));
+            }
+        }
+        return list_e_re;
+    }
+    public static ArrayList<String> tabel(ArrayList<String> l1,ArrayList<String> l2){
+        l1.addAll(l2);
+        return l1;
+    }
+    public static void main(String[] args){
+        Scanner in=new Scanner(System.in);
+        ArrayList<String> lista1=new ArrayList<>();
+        ArrayList<String> lista2=new ArrayList<>();
+        System.out.print("Tabela1 do te mbushet me vlera deri ne momentin qe jepni si input -1,per te ndaluar.");
+        String vlera;
+        do{
+            System.out.print("Jepni te dhenen: ");
+             vlera=in.next();
+            lista1.add(vlera);
+        }while(!vlera.equals("-1"));
+        System.out.println("Te dhenat e tabeles se pare u ruajten.");
+        System.out.print("Tabela2 do te mbushet me vlera deri ne momentin qe jepni si input -1,per te ndaluar.");
+        String vlera2;
+        do{
+            System.out.print("Jepni te dhenen: ");
+            vlera2=in.next();
+            lista1.add(vlera2);
+        }while(!vlera2.equals("-1"));
+        System.out.println("Te dhenat e tabeles se dyte u ruajten.");
+       System.out.println("Elementet e tabel se bashkuar: "+tabel(lista1,lista2));
+       System.out.println("Tabela1 e re me element unik: "+tabel2(lista1));
+    }
+}
