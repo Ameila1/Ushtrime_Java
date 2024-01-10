@@ -1,1 +1,62 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+/* ush6
+Ndërtoni një metodë që numëron numrin e elementëve të ndryshëm në një tabelë me stringje pa
+    modifikuar arraylistën.*/
+public class faqe{
+    public static int elementet_unik(ArrayList<String> tabel){
+        Scanner in = new Scanner(System.in);
+        ArrayList<String> vlera2 = new ArrayList<>();
+        System.out.print("Sa emra do te jepni: ");
+        int numer = in.nextInt();
+        int nisje = 0;
 
+        do {
+            System.out.print("Jepni emrin: ");
+            String a = in.next();
+            tabel.add(a);
+            nisje++;
+        } while (nisje < numer);
+
+        // Copy elements from vlera to vlera2
+        vlera2.addAll(tabel);
+
+        int count = 0;
+
+        for (int i = 0; i < vlera2.size(); i++) {
+            for (int j = i + 1; j < vlera2.size(); j++) {
+                if (vlera2.get(i).equals(vlera2.get(j))) {
+                    vlera2.set(j, "-1");
+                }
+            }
+            if (!vlera2.get(i).equals("-1")) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        ArrayList<String> vlera = new ArrayList<>();
+int element=elementet_unik(vlera);
+        System.out.println("Numri i elementeve te ndryshme: " + element);
+        in.close();
+    }
+
+}
+
+SHENIME:
+si mund te marrim si parameter nje arraylist?
+public static int elementet_unik(ArrayList<String> tabel) tipi->Arraylist<String> dhe emri->tabel
+
+Si te kopjoj nje arraylist ne nje array list tjeter?
+tabela_e_re.addAll(tabela_qe _do_tja_kopjosh_vlerat)
+  vlera2.addAll(tabel);
+
+Si e therras metoden?
+int element=elementet_unik(vlera);
+
+Sintaks:
+vlera2.get(i).equals(vlera2.get(j))
+!vlera2.get(i).equals("-1")
