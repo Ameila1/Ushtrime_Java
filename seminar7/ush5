@@ -1,0 +1,46 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+public class puna1 {
+    public static void main(String[] args){
+        /*
+        Ush 4
+        Ndërtoni një program i cili mbush një array list me vlera nga përdoruesi. Përdoruesi gjithashtu jep
+dy indekse. Programi duhet të afishojë array listën duke hequr nga lista të gjithë elementët indeksi
+i të cilëve është midis indeksit më të vogël të dhënë nga përdoruesi deri tek indeksi më të madh.*/
+        //ndertimi i nje arraylist
+        Scanner in=new Scanner(System.in);
+        ArrayList<Double> vlera=new ArrayList<>();
+        System.out.print("Sa vlera do te jepni:");
+        int numer=in.nextInt();
+        int nisje=0;
+        do{
+            System.out.print("Jepni vleren: ");
+            double vlerat=in.nextDouble();
+            vlera.add(vlerat);
+            nisje++;
+        }while(nisje<numer);
+
+       //dhenia e dy indekseve:
+       System.out.print("Jepni index-in e pare: ");
+       int index1=in.nextInt();
+        System.out.print("Jepni index-in e dyte: ");
+        int index2=in.nextInt();
+        //percaktimi i vleres max dhe min
+        int min,max;
+        if(index1>index2){
+            max=index1;
+            min=index2;
+        }else{
+            max=index2;
+            min=index1;
+        }
+        for(int i=0;i<min;i++){
+           vlera.remove(i);
+        }
+        for(int i=max;i<vlera.size();i++){
+            vlera.remove(i);
+        }
+    //afishimi i Arraylistes
+        System.out.print(vlera);
+    }
+}
