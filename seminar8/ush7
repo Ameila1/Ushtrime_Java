@@ -26,7 +26,7 @@ public class java1 {
             }
 
             // Nëse doni t'i afishoni rreshtat në rradhë të kundërt (nga fundi në fillim)
-            Collections.reverse(rreshtat);
+            Collections.reverse(rreshtat); //klase qe na mundeson disa funksione per te punuar me listat
             System.out.println("\nRreshtat e kthyera nga fundi në fillim:");
             for (String rreshti : rreshtat) {
                 System.out.println(rreshti);
