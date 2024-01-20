@@ -1,1 +1,38 @@
+/*
+Ndërtoni një program që kërkon nga përdoruesi emrin e skedarit dhe afishon numrin e
+karaktereve, fjalëve dhe rreshtave në skedar.
+*/
+//C:\Users\User\Desktop\prova_java.txt
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+//import java.io.PrintWriter;
+public class puna1{
+    public static void main(String[] args) throws FileNotFoundException {
+                 Scanner input=new Scanner(System.in);
+                 System.out.print("Jepni emrin e skedarit: ");
+                 String skedari=input.next();
+                  File f=new File(skedari);
+                  Scanner in=new Scanner(f);
+                  int nrRreshta=0;
+                  int nrFjale=0;
+                  int nrKaraktere=0;
+                  while(in.hasNextLine()){
+                      String line=in.nextLine();
+                      nrRreshta++;
+                     String[] fjal=line.split("\\s+");
+                     for(String element : fjal){
+                         nrFjale++;
+                         nrKaraktere=nrKaraktere+element.length();
+                     }
 
+                  }
+
+                  System.out.println(nrKaraktere);
+        System.out.println(nrFjale);
+        System.out.println(nrRreshta);
+in.close();
+
+input.close();
+    }
+}
