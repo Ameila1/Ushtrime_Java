@@ -1,1 +1,27 @@
 
+//C:\Users\User\Desktop\prova_java.txt
+//C:\Users\User\Documents\nota.txt
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) throws FileNotFoundException {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Jepni emrin e skedarit: ");
+        String skedari = input.next();
+
+        File f = new File(skedari);
+        Scanner in = new Scanner(f);
+        StringBuilder sb = new StringBuilder();
+
+        while (in.hasNextLine()) {
+            String line = in.nextLine();
+            sb.append(new StringBuilder(line).reverse()).append("\n");
+        }
+
+        System.out.println(sb.toString());
+        in.close();
+    }
+}
+
