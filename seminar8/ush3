@@ -1,1 +1,36 @@
+/*
+Ndërtoni një program që lexon një skedar nga përdoruesi. Skedari ka dy kolona me numra me
+presje dhjetore. Afishoni mesataren e secilit rresht.
+*/
+//C:\Users\User\Desktop\prova_java.txt
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.io.PrintWriter;
+public class puna1{
+    public static void main(String[] args) throws FileNotFoundException {
+        Scanner input=new Scanner(System.in);
+        System.out.print("Me jep emrin e skedarit hyres: ");
+        String skedarihyres=input.next();
 
+        File f=new File(skedarihyres);
+        Scanner in=new Scanner(f);
+
+        while(in.hasNextLine()){
+            String line=in.nextLine();
+            String[] numratString = line.split("\\s+");//i ndan elementet e rreshtit ne baze te hapsirave
+            double shuma=0;
+            double mesatarja=0;
+            int numriNumrave=0;
+            for(String numrat:numratString){
+                double numri=Double.parseDouble(numrat);
+                shuma=shuma+numri;
+                numriNumrave++;
+            }
+            System.out.println("Mesatarja e cdo rreshti: "+shuma/numriNumrave);
+        }
+        in.close();
+
+
+    }
+}
