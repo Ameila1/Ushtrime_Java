@@ -1,1 +1,39 @@
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Scanner;
+//C:\Users\User\Desktop\prova_java.txt
+public class java1 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Vendosni emrin e skedarit hyrës: ");
+        String emriSkedaritHyrjes = input.next();
 
+        File skedariHyrjes = new File(emriSkedaritHyrjes);
+
+        try {
+            List<String> rreshtat = Files.readAllLines(Paths.get(emriSkedaritHyrjes));
+
+            // Afisho rreshtat nga indeksi 5 deri te indeksi 0
+            System.out.println("Rreshtat nga indeksi 5 deri te indeksi 0:");
+            for (int i = 5; i >= 0; i--) {
+                if (i < rreshtat.size()) {
+                    System.out.println(rreshtat.get(i));
+                }
+            }
+
+            // Nëse doni t'i afishoni rreshtat në rradhë të kundërt (nga fundi në fillim)
+            Collections.reverse(rreshtat);
+            System.out.println("\nRreshtat e kthyera nga fundi në fillim:");
+            for (String rreshti : rreshtat) {
+                System.out.println(rreshti);
+            }
+
+        } catch (IOException e) {
+            System.out.println("Gabim: " + e.getMessage());
+        }
+    }
+}
