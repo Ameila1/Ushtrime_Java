@@ -1,0 +1,75 @@
+import java.util.Scanner;
+public class java1{
+    //KRIJIMI I KLASES
+    public class Llogari_Bankare{
+       private double balanca;
+    //KONSTRUKTORI PA PARAMETRA
+    public Llogari_Bankare(){
+        this.balanca=0;
+    }
+    //KONSTRUKTORI ME PARAMETRA
+    public Llogari_Bankare(double para){
+        this.balanca=para;
+    }
+    //LEXOJME BALANCEN NGA PERDORUESI
+        public void setBalanca(double balanca){
+        this.balanca=balanca;
+        }
+    //METOD QE KTHE SASIN E PARAVE PAS DEPOZITIMIT
+        public double depozitoPara(double para){
+          return this.balanca+=para;
+        }
+    //METOD QE KTHEN PARAT PAS TERHEQJES
+        public double terhiqPara(double para){
+        final double PENALITY=10;
+        if(para>balanca){//sasia e parave eshte me e vogel
+            balanca=balanca-PENALITY;//penalitet edhe pse ska i ul para
+        }else{
+            balanca=balanca-para;
+        }
+          return this.balanca;
+        }
+        //Merr balancen
+        public double getBalanca(){
+        return balanca;
+        }
+        //SHTO INTERES
+        public void addInteres(double interesi){
+        double llogarit_Interesin=balanca*interesi/100;
+        balanca=balanca+llogarit_Interesin;
+        }
+        //Afishojme Balancen
+        public void Afisho(){
+        System.out.println("Balanca juaj aktualish eshte: "+balanca);
+        }
+    }
+    public static void main(String[] args){
+        Scanner in=new Scanner(System.in);
+     Llogari_Bankare klient=new java1().new Llogari_Bankare();
+        System.out.println("Pershendetje klient!Zgjidhni nje nga opsionet: ");
+        System.out.println("1)Depozito para ");
+        System.out.println("2)Terhiq para ");
+        System.out.println("3)Afisho balancen ");
+        int opsion;
+     do {
+
+         opsion=in.nextInt();
+         if (opsion == 1) {
+             System.out.println("Jepni sasin e parave qe do te depozitoni: ");
+             double paraD = in.nextDouble();
+             klient.depozitoPara(paraD);
+             klient.Afisho();
+         } else if (opsion == 2) {
+             System.out.println("Jepni sasin e parave qe doni te terhiqni: ");
+             double paraT = in.nextDouble();
+             klient.terhiqPara(paraT);
+             klient.Afisho();
+         } else if (opsion == 3) {
+             klient.Afisho();
+         } else {
+             System.out.println("Opsioni qe dhate nuk korrespondon me alternativat.");
+         }
+     }while(opsion!=-1);
+
+    }
+}
