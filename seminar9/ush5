@@ -1,0 +1,38 @@
+/*
+Implementoni një klasë Population e cili simulon rritjen e popullsisë. Konstruktori merr numrin e
+popullsisë fillestare. Ndërtoni një metodë e cila simulon rritjen e popullsisë duke e dyfishuar atë,
+një metodë e cila e zvogëlon popullsinë me 10% dhe një metodë e cila kthen numrin aktual të
+popullsisë. Ndërtoni programin i cili afishon dy herë numrin e popullsisë pas rritjes dhe zvogëlimit
+të saj dy herë.
+*/
+public class java1 {
+public class Popullsia{
+    private int popullsia;
+    public Popullsia(int popullsia){
+        this.popullsia=popullsia;
+    }
+    public int rritPopullsin(){
+       return popullsia=popullsia*2;
+    }
+    public int zvogeloPopullsin(){
+        return popullsia=popullsia-(int)(popullsia*0.1);
+    }
+    public void Afisho(){
+        System.out.println("Popullsise: "+popullsia);
+    }
+    public double getPopullsia(){
+        return popullsia;
+    }
+}
+
+    public static void main(String[] args){
+    Popullsia p=new java1().new Popullsia(324578913);
+   System.out.println("Popullsia pas rritjes: ");
+   p.rritPopullsin();
+   p.Afisho();
+
+   System.out.println("Popullsia pas zvogelimit: ");
+   p.zvogeloPopullsin();
+   p.Afisho();
+}
+}
