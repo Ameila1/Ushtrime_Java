@@ -1,0 +1,137 @@
+/*
+Implementoni një klasë Adresa. Një adresë ka numrin, rrugën, numrin e apartamentit (opsional),
+qytetin, shtetin dhe kodin postar ndërtoni dy konstruktorë: një me numrin e apartamentit dhe
+tjetri pa të. Ndërtoni metodën print që afishon të dhënat. Ndërtoni një metodë method public
+boolean comesBefore(Address other) që teston nëse kjo adresë vjen përpara adresës tjetër, duke
+u nisur nga kodi postar.
+*/
+import java.util.Scanner;
+public class java1 {
+    public class Adresa{
+        private int numri;
+        private String rruga;
+        private int numriApartamentit;
+        private String Qyteti;
+        private String Shteti;
+        private double kodiPostar;
+        //KONSTUKTORI ME NUMRIN E APARTAMENTIT
+        public Adresa(int numri,String rruga,int numriApartamentit,String Qyteti,String Shteti,double kodiPostar){
+            this.numri=numri;
+            this.rruga=rruga;
+            this.numriApartamentit=numriApartamentit;
+            this.Qyteti=Qyteti;
+            this.Shteti=Shteti;
+            this.kodiPostar=kodiPostar;
+
+        }
+        //KONSTRUKTORI PA NUMRIN E APARTAMENTIT
+        public Adresa(int numri,String rruga,String Qyteti,String Shteti,double kodiPostar){
+            this.numri=numri;
+            this.rruga=rruga;
+            this.numriApartamentit=0;
+            this.Qyteti=Qyteti;
+            this.Shteti=Shteti;
+            this.kodiPostar=kodiPostar;
+        }
+        //KONSTURKTOR PA PARAMETRA
+        public Adresa(){
+            this.numri=0;
+            this.rruga="";
+            this.numriApartamentit=0;
+            this.Qyteti="";
+            this.Shteti="";
+            this.kodiPostar=0;
+
+        }
+        //METOD PER TE AFISHUAR TE DHENAT
+        public void Afisho(){
+          System.out.println("Numri tel: "+numri);
+          System.out.println("Emri rruges: "+rruga);
+          System.out.println("Numri i apartamentit: "+numriApartamentit);
+          System.out.println("Qyteti: "+Qyteti);
+          System.out.println("Shteti: "+Shteti);
+          System.out.println("Kodi postar: "+kodiPostar);
+        }
+        //METOD VENDOS VLERA
+        public void setValues(int numri,String rruga,int numriApartamentit,String Qyteti,String Shteti,double kodiPostar){
+            this.numri=numri;
+            this.rruga=rruga;
+            this.numriApartamentit=numriApartamentit;
+            this.Qyteti=Qyteti;
+            this.Shteti=Shteti;
+            this.kodiPostar=kodiPostar;
+        }
+        public void setValues(int numri,String rruga,String Qyteti,String Shteti,double kodiPostar){
+            this.numri=numri;
+            this.rruga=rruga;
+            this.Qyteti=Qyteti;
+            this.Shteti=Shteti;
+            this.kodiPostar=kodiPostar;
+        }
+        //testoj nëse kjo adresë vjen përpara adresës tjetër, duke
+        //u nisur nga kodi postar.
+        public boolean comesBefore(Adresa other){
+             return this.kodiPostar<other.kodiPostar;
+        }
+
+       public void setKodi(double kodiPostar){
+            this.kodiPostar=kodiPostar;
+       }
+       public double getKodiPostar(){
+            return kodiPostar;
+       }
+    }
+    public static void main(String[] args){
+        Scanner in=new Scanner(System.in);
+        Adresa person=new java1().new Adresa(); //obejkti i pare
+        Adresa person2=new java1().new Adresa(); //objekt i dyte per te krahasuar dy kode postare te ndryshme
+        System.out.println("Zgjidh nje nga opsionet: ");
+        System.out.println("1)Adresa e pare ka numrin, rrugën ,qytetin, shtetin dhe kodin postar");
+        System.out.println("2)Adresa e dyte ka numrin, rrugën ,numrin e apartamentit ,qytetin, shtetin dhe kodin postar");
+        int numri,numriApartamentit;
+        double kodiPostar;
+        String rruga,Qyteti,Shteti;
+        int opsion=in.nextInt();
+        if(opsion==1){
+            System.out.println("Jepni vlerat. ");
+            System.out.println("Numri i tel: ");
+            numri=in.nextInt();
+            System.out.println("Emri i rruges: ");
+            rruga=in.next();
+            System.out.println("Emrin e qytetit: ");
+            Qyteti=in.next();
+            System.out.println("Emrin e shtetit: ");
+            Shteti=in.next();
+            System.out.println("Kodi postar: ");
+            kodiPostar=in.nextDouble();
+            person.setValues(numri,rruga,Qyteti,Shteti,kodiPostar);
+
+        } else if (opsion==2) {
+            System.out.println("Jepni vlerat. ");
+            System.out.println("Numri i tel: ");
+            numri=in.nextInt();
+            System.out.println("Emri i rruges: ");
+            rruga=in.next();
+            System.out.println("Vendosni nr e apartamentit: ");
+            numriApartamentit= in.nextInt();
+            System.out.println("Emrin e qytetit: ");
+            Qyteti=in.next();
+            System.out.println("Emrin e shtetit: ");
+            Shteti=in.next();
+            System.out.println("Kodi postar: ");
+            kodiPostar=in.nextDouble();
+            person.setValues(numri,rruga,numriApartamentit,Qyteti,Shteti,kodiPostar);
+        }
+
+        System.out.println("Jepni kodin e ri postar: ");
+        double kod2Postar=in.nextDouble();
+        person2.setKodi(kod2Postar);
+        boolean shprehje= person.comesBefore(person2);
+        if(shprehje==true){
+            System.out.println("Adresa 1 eshte para adreses 2");
+        }else{
+            System.out.println("Adresa 2 eshte para adreses 1");
+        }
+        person.Afisho();
+    }
+}
