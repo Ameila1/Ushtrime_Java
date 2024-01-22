@@ -1,0 +1,59 @@
+/*
+Implementoni klasën Student.Studenti ka emrin dhe numrin total të pikëve në quiz. Ndërtoni
+konstruktorin dhe metodat getName (), addQuiz(int score), getTotalScore () dhe
+getAverageScore(). Ju duhet të ruani dhe numrin e quiz-eve qe ka kryer studenti. Testoni klasën
+Student.
+*/
+import java.util.Scanner;
+public class java1 {
+    public class Student{
+        String emri;
+        int numri;
+        //KONSTRUKTORI PA PARAMETRA
+        public Student(){
+            emri="";
+            numri=0;
+        }
+        //Konstruktori me parametra
+        public Student(String emri,int numri){
+            this.emri=emri;
+            this.numri=numri;
+        }
+         public String getName(){
+            return emri;
+         }
+     // addQuiz(int score)
+        public void addQuiz(int score){
+            numri=numri+score;
+
+        }
+        // getTotalScore ()
+       public int getTotalScore(){
+       return numri;
+       }
+       //getAverageScore()
+       public double getAvarageScore(int saKuice){
+            return  numri*1.0/saKuice;
+       }
+       public void setEmri(String emri){
+            this.emri=emri;
+        }
+    }
+    public static void main(String[] args){
+       Student s=new java1().new Student();
+       s.setEmri("Ami");
+       Scanner in=new Scanner(System.in);
+       String emri=s.getName();
+       System.out.println("Jepni numrin e kuiceve qe keni kryer: ");
+       int nr=in.nextInt();
+       int piket;
+       for(int i=0;i<nr;i++){
+           System.out.println("Jepni piket e kuicit te "+(i+1)+": ");
+           piket=in.nextInt();
+           s.addQuiz(piket);
+       }
+       System.out.println("Piket totale: "+s.getTotalScore());
+       System.out.println("Mesatarja e pikeve: "+s.getAvarageScore(nr));
+
+    }
+}
