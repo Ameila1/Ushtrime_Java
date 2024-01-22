@@ -1,0 +1,48 @@
+/*
+Implementoni një klasë Product. Një produkt ka një emër dhe një çmim, për shembull neë Product
+(“Tost”, 29.95). Ndërtoni metodat getName, getPrice dhe reducePrice.
+Ndërtoni një program(o budallaqe eshte vet emri i programi spsh ti ketu e ke java1)
+ProductPrinter i cili do afishojë emrin dhe çmimin e dy produkteve, do të reduktojë çmimin e tyre
+me 5$ dhe do të afishojë përsëri çmimet e tyre.
+*/
+public class java1 {
+ public class Produkt{
+     private String emri;
+     private double cmimi;
+     public Produkt(String emri,double cmimi){
+         this.emri=emri;
+         this.cmimi=cmimi;
+     }
+     public Produkt(){
+         this.emri="";
+         this.cmimi=0;
+     }
+
+     public String getEmri(){
+         return emri;
+     }
+     public double getCmimi(){
+         return cmimi;
+     }
+     public void reduktoCmimin(){
+         cmimi=cmimi-5;
+     }
+     public void Afisho(){
+         System.out.println("Emri i produktit: "+emri);
+         System.out.println("Cmimi i produktit: "+cmimi);
+     }
+ }
+
+    public static void main(String[] args){
+     Produkt p1=new java1().new Produkt("molto",80);
+     Produkt p2=new java1().new Produkt("Kafe",100);
+    System.out.println("Produktet para reduktimit te cmimit: ");
+     p1.Afisho();
+     p2.Afisho();
+     p1.reduktoCmimin();
+     p2.reduktoCmimin();
+     System.out.println("Produktet pas reduktimit te cmimit: ");
+     p1.Afisho();
+     p2.Afisho();
+    }
+}
