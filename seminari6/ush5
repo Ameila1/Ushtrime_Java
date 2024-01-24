@@ -1,1 +1,34 @@
+import java.util.ArrayList;
+/*
+Ndërtoni një program që llogarit shumën alternative të elementëve në tabelë. Për shembull nëse
+programi lexon elementët 1 4 9 16 9 atëhërë do të llogarisë vlerën 1 – 4 + 9 – 16 + 9.
+                                                                   + - + - + - ...
+*/
+import java.util.Scanner;
+import java.util.Random;
+public class java1{
+    public static int shumaAlterantive(int[] t){
+        int shuma=0;
+        int shenja=1;
+        for(int i=0;i<10;i++){
+            shuma=shuma+t[i]*shenja;
+            shenja=shenja*(-1);
 
+        }
+        return shuma;
+    }
+   
+   public static void main(String[] args){
+    int[] tabel=new int[10];
+    Random rastesisht=new Random();
+    for (int i=0;i<10;i++){
+        tabel[i]=rastesisht.nextInt(10)+1;
+    }
+    System.out.println("Vlerat e tabeles: ");
+    for(int i=0;i<10;i++){
+        System.out.print(tabel[i]+" ");
+    }
+    System.out.println("Shuma alterantive eshte: "+shumaAlterantive(tabel));
+
+    }
+}
