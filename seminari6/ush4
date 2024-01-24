@@ -1,1 +1,33 @@
+import java.util.ArrayList;
+/*
+Ndërtoni një metodë që merr si parametër një tabelë dhe heq vlerën më të vogël nga një tabelë e
+mbushur pjesërisht. Testoni metodën.
+*/
+import java.util.Scanner;
+import java.util.Random;
+public class java1{
+    public static int vleraMeEvogel(int[] t){
+        int min=t[0];
+        for (int nr:t){
+            if(min>nr){
+                min=nr;
+            }
+        }
+        return min;
+    }
+   public static void main(String[] args){
+        int[] tabel=new int[10];
+        Random rastesisht=new Random();
+//        for (int nr: tabel){
+//            nr=rastesisht.nextInt(10)+1;
+//        }
+       for(int i=0;i<10;i++){
+           tabel[i]=rastesisht.nextInt(10)+1;
+       }
+        for(int nr:tabel){
+            System.out.println(nr+" ");
+        }
+        System.out.println("Vlera me e vogel: "+vleraMeEvogel(tabel));
 
+    }
+}
