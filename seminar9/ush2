@@ -57,3 +57,36 @@ public class java1 {
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+public class Student {
+    private String emri;
+    private double nrTotal;
+    public Student(String emri,double nrTotal){
+        this.emri=emri;
+        this.nrTotal=nrTotal;
+    }
+     public String getEmri(){
+        return emri;
+     }
+     public void mblidhPiket(double piket){
+        nrTotal=nrTotal+piket;
+     }
+     public double piketTotale(){
+        return nrTotal;
+     }
+     public double mesatare(int lojrave){
+        return nrTotal/lojrave;
+     }
+
+}
