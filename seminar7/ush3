@@ -46,6 +46,15 @@ public class Main {
             mergedList.add(b.get(j));
             j++;
         }
+//shtimi i sakte:
+ if(i<a.size()){
+            mergedList.addAll(a.subList(i,a.size()));
+            Collections.sort(mergedList);  //perdor kete metoden e kesaj klase per te listuar pjesen e mbetur
+        }
+        if(j< b.size()){
+            mergedList.addAll(b.subList(j,b.size()));
+            Collections.sort(mergedList);
+        }
 
         // Kthe rezultatin e bashkimit të renditur
         return mergedList;
