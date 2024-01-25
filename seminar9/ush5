@@ -36,3 +36,44 @@ public class Popullsia{
    p.Afisho();
 }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+public class Popullsia {
+    private int nrPopullsise;
+    public Popullsia(int nrPopullsise){
+        this.nrPopullsise=nrPopullsise;
+    }
+    public void rritPopullsin(){
+        nrPopullsise=nrPopullsise*2;
+    }
+    public void zvogeloPopullsine(){
+        nrPopullsise=nrPopullsise-(nrPopullsise*10/100);
+    }
+    public int getNrPopullsise(){
+        return nrPopullsise;
+    }
+}
+import java.util.Scanner;
+
+public class am {
+    public static void main(String[] args){
+        Popullsia p=new Popullsia(1235566);
+        System.out.println("Popullsia: "+p.getNrPopullsise());
+        p.rritPopullsin();
+        System.out.println("Popullsia pas rritjes: "+p.getNrPopullsise());
+        p.zvogeloPopullsine();
+        System.out.println("Popullesia pas zbritjes: "+p.getNrPopullsise());
+
+    }
+}
