@@ -1,0 +1,72 @@
+/*Ndertoni nje program "Exchange" me nderfaqe perdoruesi qe konverton parate nga nje mondedh ne nje monedhe
+* tjeter.Programi te permbaje nje kuti teksti ku te vendoset shuma per konvertim,nje kombobox me
+* monedha ku do te perzgjidhen monedha origjinale nje kombo box me monedha per konvertim dhe nje buton konverto,
+* Ne klikim te butonit konverto te paraqitet rezultati ne nje siperfaqe teksti.Ne kete siperfaqe te ruahe te gjitha rezultatet
+* e gjetura*/
+
+
+public class Skedar extends JFrame{
+    private JTextField textField;//lexojme nr
+    private JComboBox comboBox1,comboBox2;//si do behet konvertimi
+    private JLabel label1,label2,label;//percaktues per combobox
+    private JButton button;//afishimi i rezultatit ne textarea
+    private JTextArea textArea;
+    private JScrollPane scrollPane;
+    public static void main(String[] args){
+        new Skedar();
+    }
+    public Skedar(){
+        setSize(350,350);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Konvertimi i parave");
+        ActionListener d=new Degjues();
+        JPanel panel=new JPanel();
+        textField=new JTextField(10);
+        comboBox1=new JComboBox<>();
+        comboBox1.addItem("LEKE");
+        comboBox1.addItem("EURO");
+
+        comboBox2=new JComboBox<>();
+        comboBox2.addItem("LEKE");
+        comboBox2.addItem("EURO");
+
+        label=new JLabel("Jepni shifren e parave: ");
+        label1=new JLabel("Parat jane ne(euro,dollar,leke");
+        label2=new JLabel("Si doni t'i konvertoni:");
+        button=new JButton("kliko per te bere konvertimin e parave");
+        textArea=new JTextArea(20,100);
+        scrollPane=new JScrollPane(textArea);
+        panel.add(label);
+        panel.add(textField);
+        panel.add(label1);
+        panel.add(comboBox1);
+        panel.add(label2);
+        panel.add(comboBox2);
+        panel.add(button);
+        button.addActionListener(d);
+        panel.add(scrollPane);
+        add(panel);
+        setVisible(true);
+    }
+    class Degjues implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            if(e.getSource()==button){
+                String nr=textField.getText();
+                double numri=Double.parseDouble(textField.getText());
+                String opsioni1=(String) comboBox1.getSelectedItem();
+                String opsioni2=(String) comboBox2.getSelectedItem();
+                if(opsioni1.equalsIgnoreCase(opsioni2)){
+                    textArea.append(nr);
+                }
+                if(opsioni1.equalsIgnoreCase("leke") && opsioni2.equalsIgnoreCase("euro")){
+                    numri=numri*10.3;//supozoj po e shumezova me 10.3 e kthej ne euro
+                    textArea.append(numri+" \n");
+                }else if(opsioni1.equalsIgnoreCase("euro")&& opsioni2.equalsIgnoreCase("leke")){
+                    numri=numri/10.3;
+                    textArea.append(numri+" \n");
+                }
+            }
+        }
+    }
+
+}
