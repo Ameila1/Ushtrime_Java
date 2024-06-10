@@ -1,3 +1,4 @@
+USH1
 /*Shkruani nje metode merr Akronim e cila kthen akronimin e nje stringu qe merr
 * si parameter.Per kete do te perdoret karakteri# dhe jo hapsira duke supozuar qe nuk do te kete hapsira
 * ne String.Nje akronik perbehet nga shkronja e pare e inputit sitring jo#
@@ -19,5 +20,330 @@ public class Kerkimi {
       String f=  merrAkronim("Not#a##Number");
         System.out.println( f);
     }
+}
+USH2
+/*Krijoni klasen Media me atributet emri dhe kohezgjatja.ndertoni konstruktorin me parametra,
+ * metoda aksesuse dhe ndryshuese dhe nje metode equals dhe metoden toString.
+ * Ndertoni klasen Socila media e cila trashegon nga klasa Media.per cdo media do te ruahet gjithashtu
+ * p;atforma dhe numri i vizitoreve.Ndertoni konstruktorin me parametra
+ * metodat get/set dhe nje metod toString e cila afishon te dhenat e medias sociale.
+ * Ndertoni klasen e Quahtur PlatformaMedia e cila ruan nje lisete te mediave socilae .Ndertoni metoden
+ * ShtoMedia e sia shton media nqs  ajo nuk ekziston,metoden gjejMedia e cila kthen true,nese media ndodhet
+ *  dhe false perndryshe si dhe metoden afishoMediaPopullore ,e cila afishon mediat te cilat kane me teper se 1 milion vizitor*/
 
+import java.util.Objects;
+/*Krijoni klasen Media me atributet emri dhe kohezgjatja.ndertoni konstruktorin me parametra,
+ * metoda aksesuse dhe ndryshuese dhe nje metode equals dhe metoden toString.*/
+public class Media {
+    private String emri;
+    private double kohezgjatja;
+    public Media(String emri,double kohezgjatja){
+        this.emri=emri;
+        this.kohezgjatja=kohezgjatja;
+    }
+    public String getEmri(){
+        return this.emri;
+    }
+    public double getKohezgjatja(){
+        return this.kohezgjatja;
+    }
+    public void setEmri(String emri){
+        this.emri=emri;
+    }
+    public void setKohezgjatja(double kohezgjatja){
+        this.kohezgjatja=kohezgjatja;
+    }
+    //krahasimi i dy objekteve te te njejtit tip
+
+   public boolean equals(Object obj) {
+        if(this==obj){
+            return true;
+        }
+        if(obj==null || getClass()!=obj.getClass()){
+            return false;
+        }
+        Media media=(Media) obj;
+       return Double.compare(media.kohezgjatja,kohezgjatja)==0 && Objects.equals(emri,media.getEmri());
+   }
+
+   public String toString(){
+        return "Emri medias: "+getEmri()+"\nKohezgjatja: "+getKohezgjatja();
+   }
+
+}
+
+
+
+/* Ndertoni klasen Socila media e cila trashegon nga klasa Media.per cdo media do te ruahet gjithashtu
+ * p;atforma dhe numri i vizitoreve.Ndertoni konstruktorin me parametra
+ * metodat get/set dhe nje metod toString e cila afishon te dhenat e medias sociale.*/
+public class MediaSociale extends Media{
+    private String platforma;
+    private int vizitoret;
+    public MediaSociale(String emri,double kohezgjatja,String platforma,int vizitoret){
+        super(emri,kohezgjatja);
+        this.platforma=platforma;
+        this.vizitoret=vizitoret;
+    }
+    public String getPlatforma(){
+        return this.platforma;
+    }
+    public int getVizitoret(){
+        return this.vizitoret;
+    }
+    public void setPlatforma(String platforma){
+        this.platforma=platforma;
+    }
+    public void setVizitoret(int vizitoret){
+        this.vizitoret=vizitoret;
+    }
+   public String toString(){
+        return super.toString()+"Platforma: "+getPlatforma()+"Nr i vizitoreve: \n"+getVizitoret();
+   }
+
+}
+import java.util.ArrayList;
+
+/*Ndertoni klasen e Quahtur PlatformaMedia e cila ruan nje lisete te mediave socilae .Ndertoni metoden
+* ShtoMedia e sia shton media nqs  ajo nuk ekziston,metoden gjejMedia e cila kthen true,nese media ndodhet
+* dhe false perndryshe si dhe metoden afishoMediaPopullore ,e cila afishon mediat te cilat kane me teper se 1 milion vizitor*/
+public class PlatformaMedia {
+    private ArrayList<MediaSociale> mediat;
+    public PlatformaMedia(){
+        this.mediat=null;
+    }
+    public PlatformaMedia(ArrayList<MediaSociale> mediat){
+        this.mediat=mediat;
+    }
+    public void shtoMedia(MediaSociale media){
+        if(mediat.contains(media)){
+            System.out.println("Media eshte ekzistuese");
+        }else{
+            mediat.add(media);
+        }
+    }
+    public boolean gjejMedian(MediaSociale media){
+        if(mediat.contains(media)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public void afishoMediatPopullore(){
+        if (mediat == null) {
+            return;
+        }
+        for (MediaSociale media : mediat) {
+            if (media.getVizitoret() > 1000000) {
+                System.out.println(media);
+            }
+        }
+    }
+}
+USH3
+/*Shkruani nje program qe vizaton vija ne menyre random.Aplikacioni do te permbaje 2 butona
+qe bejne perkatesisht shtimin e nje vije te re ose heqjen e nje vije ekzistuese*/
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
+
+public class puna1 extends JFrame {
+    private JButton addButton;
+    private JButton removeButton;
+    private DrawingPanel drawingPanel;
+
+    public static void main(String[] args) {
+       new puna1();
+    }
+
+    public puna1() {
+        setTitle("Random Line Drawer");
+        setSize(400, 400);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        addButton = new JButton("Add Line");
+        removeButton = new JButton("Remove Line");
+
+        drawingPanel = new DrawingPanel();
+
+        addButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                drawingPanel.addLine();
+            }
+        });
+
+        removeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                drawingPanel.removeLine();
+            }
+        });
+
+        JPanel controlPanel = new JPanel();
+        controlPanel.setLayout(new GridLayout(1, 2));
+        controlPanel.add(addButton);
+        controlPanel.add(removeButton);
+
+        add(controlPanel, BorderLayout.SOUTH);
+        add(drawingPanel, BorderLayout.CENTER);
+
+        setVisible(true);
+    }
+}
+
+class DrawingPanel extends JPanel {
+    private List<Line> lines;
+    private Random random;
+
+    public DrawingPanel() {
+        lines = new ArrayList<>();
+        random = new Random();
+    }
+
+    public void addLine() {
+        int startX = random.nextInt(getWidth());
+        int startY = random.nextInt(getHeight());
+        int endX = random.nextInt(getWidth());
+        int endY = random.nextInt(getHeight());
+
+        lines.add(new Line(startX, startY, endX, endY));
+        repaint();
+    }
+
+    public void removeLine() {
+        if (!lines.isEmpty()) {
+            lines.remove(lines.size() - 1);
+            repaint();
+        }
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        for (Line line : lines) {
+            g.drawLine(line.startX, line.startY, line.endX, line.endY);
+        }
+    }
+
+    private static class Line {
+        int startX, startY, endX, endY;
+
+        public Line(int startX, int startY, int endX, int endY) {
+            this.startX = startX;
+            this.startY = startY;
+            this.endX = endX;
+            this.endY = endY;
+        }
+    }
+}
+USH4
+Krijoni nje aplikacion qe lexon nga nje skedar qe merret nga perdoruesi nepermjet nje komponenteje JFileChooser.Ne kete skedar
+ ruhen fjalet e nje fjalori.krijoni nje nderfaqe per kerkim qe permban tre komponente te tipit JextField per:Germen e pare,germen e fundit
+  gjatesin e fjales si dhe nje buton.Ne klikimin e butonit afishohen ne nje komponente te tipit teztArea te te gjitha fjaleve
+  bazuar ne kerkimin e bere.*/
+Krijoni nje aplikacion qe lexon nga nje skedar qe merret nga perdoruesi nepermjet nje komponenteje JFileChooser.Ne kete skedar
+ ruhen fjalet e nje fjalori.krijoni nje nderfaqe per kerkim qe permban tre komponente te tipit JextField per:Germen e pare,germen e fundit
+  gjatesin e fjales si dhe nje buton.Ne klikimin e butonit afishohen ne nje komponente te tipit teztArea te te gjitha fjaleve
+  bazuar ne kerkimin e bere.*/
+public class Kerkimi extends JFrame {
+    private JLabel label1,label2,label3,label4,label5;
+    private JButton button1,button2;
+    private JTextField textField1,textField2,textField3;
+    private JTextArea textArea;
+   private ArrayList<String> fjaletEfjalorit;
+
+    public static void main(String[] args){
+    new Kerkimi();
+    }
+    final class Degjues implements ActionListener {
+        public void actionPerformed(ActionEvent e){
+            if(e.getSource()==button1){
+                JFileChooser fileChooser=new JFileChooser();
+                int rezultati=fileChooser.showOpenDialog(null);//0
+                if(rezultati==JFileChooser.APPROVE_OPTION){
+                  File f=new File(fileChooser.getSelectedFile().getAbsolutePath());
+                  fjaletEfjalorit=new ArrayList<>();
+                    Scanner in= null;
+                    try {
+                        in = new Scanner(f);
+                        String fjala;
+                        while(in.hasNext()){
+                            fjala=in.next();
+                            fjaletEfjalorit.add(fjala);
+                        }
+                    } catch (FileNotFoundException ex) {
+                        throw new RuntimeException(ex);
+                    }
+
+
+                }
+            }
+            if(e.getSource()==button2){
+                String germa1=textField1.getText();
+                String germa2=textField2.getText();
+                String gjatesi=textField3.getText();
+                int nr=Integer.parseInt(gjatesi);
+
+                for(int i=0;i<fjaletEfjalorit.size();i++){
+                  String fjala=fjaletEfjalorit.get(i);
+                  if(fjala.charAt(0)==germa1.charAt(0) && fjala.charAt(fjala.length()-1)==germa2.charAt(0) && fjala.length()==nr){
+                      textArea.append(fjala+" \n");
+                  }
+                }
+            }
+        }
+    }
+    public Kerkimi(){
+        setSize(350,350);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Gjetja e fjaleve ne fjalor.");
+        ActionListener d=new Degjues();
+        JPanel panel=new JPanel();
+        panel.setLayout(new GridLayout(1,2));
+        label1=new JLabel("Zgjidhni skedarin hyres:");
+        button1=new JButton("Choose file");
+        button1.addActionListener(d);
+        panel.add(label1);
+        panel.add(button1);
+        JPanel panel1=new JPanel();
+        panel1.setLayout(new GridLayout(1,7));
+       label2=new JLabel("Germa e pare: ");
+       textField1=new JTextField(5);
+       label3=new JLabel("Germa e fundit: ");
+       textField2=new JTextField(5);
+       label4=new JLabel("Gjatesia e fjales: ");
+       textField3=new JTextField(5);
+       button2=new JButton("Kerko");
+       button2.addActionListener(d);
+        panel1.add(label2);
+        panel1.add(textField1);
+        panel1.add(label3);
+        panel1.add(textField2);
+        panel1.add(label4);
+        panel1.add(textField3);
+        panel1.add(button2);
+
+        JPanel panel2=new JPanel();
+        panel2.setLayout(new GridLayout(1,2));
+        label5=new JLabel("Rezultati i kerkimit: ");
+        textArea=new JTextArea(20,50);
+        panel2.add(label5);
+        panel2.add(textArea);
+
+        JPanel panelF=new JPanel(new GridLayout(3,1));
+        panelF.add(panel);
+        panelF.add(panel1);
+        panelF.add(panel2);
+        add(panelF);
+
+        setVisible(true);
+
+    }
 }
