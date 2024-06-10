@@ -152,94 +152,73 @@ import java.util.Random;
 import java.util.ArrayList;
 import java.util.List;
 
-public class puna1 extends JFrame {
-    private JButton addButton;
-    private JButton removeButton;
-    private DrawingPanel drawingPanel;
+public class Kerkimi extends JFrame {
+    private ArrayList<Line> lines;
+    private JPanel drawingPanel;
 
     public static void main(String[] args) {
-       new puna1();
+        new Kerkimi();
     }
 
-    public puna1() {
-        setTitle("Random Line Drawer");
+    public Kerkimi() {
+        setTitle("Random Lines");
         setSize(400, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        addButton = new JButton("Add Line");
-        removeButton = new JButton("Remove Line");
-
-        drawingPanel = new DrawingPanel();
-
-        addButton.addActionListener(new ActionListener() {
+        lines = new ArrayList<>();
+        drawingPanel = new JPanel() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                drawingPanel.addLine();
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                for (Line line : lines) {
+                    g.drawLine(line.x1, line.y1, line.x2, line.y2);
+                }
             }
-        });
-
-        removeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                drawingPanel.removeLine();
-            }
-        });
-
-        JPanel controlPanel = new JPanel();
-        controlPanel.setLayout(new GridLayout(1, 2));
-        controlPanel.add(addButton);
-        controlPanel.add(removeButton);
-
-        add(controlPanel, BorderLayout.SOUTH);
+        };
+        drawingPanel.setPreferredSize(new Dimension(300, 300));
         add(drawingPanel, BorderLayout.CENTER);
+
+        JButton addButton = new JButton("Add Line");
+        addButton.addActionListener(e -> addLine());
+
+        JButton removeButton = new JButton("Remove Line");
+        removeButton.addActionListener(e -> removeLine());
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.add(addButton);
+        buttonPanel.add(removeButton);
+
+        add(buttonPanel, BorderLayout.SOUTH);
 
         setVisible(true);
     }
-}
 
-class DrawingPanel extends JPanel {
-    private List<Line> lines;
-    private Random random;
-
-    public DrawingPanel() {
-        lines = new ArrayList<>();
-        random = new Random();
+    private void addLine() {
+        Random random = new Random();
+        int x1 = random.nextInt(300);
+        int y1 = random.nextInt(300);
+        int x2 = random.nextInt(300);
+        int y2 = random.nextInt(300);
+        lines.add(new Line(x1, y1, x2, y2));
+        drawingPanel.repaint();
     }
 
-    public void addLine() {
-        int startX = random.nextInt(getWidth());
-        int startY = random.nextInt(getHeight());
-        int endX = random.nextInt(getWidth());
-        int endY = random.nextInt(getHeight());
-
-        lines.add(new Line(startX, startY, endX, endY));
-        repaint();
-    }
-
-    public void removeLine() {
+    private void removeLine() {
         if (!lines.isEmpty()) {
             lines.remove(lines.size() - 1);
-            repaint();
-        }
-    }
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        for (Line line : lines) {
-            g.drawLine(line.startX, line.startY, line.endX, line.endY);
+            drawingPanel.repaint();
         }
     }
 
     private static class Line {
-        int startX, startY, endX, endY;
+        int x1, y1, x2, y2;
 
-        public Line(int startX, int startY, int endX, int endY) {
-            this.startX = startX;
-            this.startY = startY;
-            this.endX = endX;
-            this.endY = endY;
+        Line(int x1, int y1, int x2, int y2) {
+            this.x1 = x1;
+            this.y1 = y1;
+            this.x2 = x2;
+            this.y2 = y2;
         }
     }
 }
