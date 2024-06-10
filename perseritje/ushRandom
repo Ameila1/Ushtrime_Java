@@ -70,3 +70,71 @@ public class Skedar extends JFrame{
     }
 
 }
+
+
+
+Ush 2
+/*Ndertoni nje aplikacion grafik qe krijon nje dritare,me nje panel te vendosur ne pjesen qendrore te faqes
+* ne te cilen eshte shfaqur mesazhi Welcome to Java dhe dy butona majtas djadhtas ne pjesen jugore te dritares.Duke klikuar tek butonat
+* levizet mesazhi ne drejtime te ndryshme*/
+
+public class Skedar extends JFrame{
+    private JLabel label;
+    private JButton button1,button2;
+    public static void main(String[] args){
+        new Skedar();
+    }
+    public Skedar(){
+        setSize(300,350);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Java nuk rrotullot rreth teje,ti rrotullohesh drejt javes.");
+        JPanel panel=new JPanel();
+        MouseListener m=new DegjuesMausi();
+        panel.setLayout(new BorderLayout());
+        label=new JLabel("Welcome to Java!");
+        JPanel panel1=new JPanel(new GridLayout(1,2));
+        button1=new JButton("Kliko per te levizur majtas.");
+        button2=new JButton("kliko per te levizur djathtas.");
+        panel1.add(button1);
+        panel1.add(button2);
+        button1.addMouseListener(m);
+        button2.addMouseListener(m);
+        panel.add(label,BorderLayout.CENTER);
+        panel.add(panel1,BorderLayout.SOUTH);
+        add(panel);
+        setVisible(true);
+    }
+    class DegjuesMausi implements MouseListener{
+        public void mouseClicked(MouseEvent e){
+            if(e.getSource()==button1){
+                label.setLocation(label.getX()-15,label.getY());//leviz majtas
+            }
+            if(e.getSource()==button2){
+                label.setLocation(label.getX()+15,label.getY());
+               // label.getLocation(label.getX()+5,label.getY());//leviz djathtas
+            }
+
+
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
+    }
+}
