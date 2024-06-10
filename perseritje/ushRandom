@@ -282,7 +282,15 @@ public class Skedar extends JFrame{
         public void actionPerformed(ActionEvent e) {
          if(e.getSource()==button){
           if((radioButton1.isSelected()||radioButton2.isSelected()||radioButton3.isSelected())&& (!textField1.getText().isEmpty()&& !textField2.getText().isEmpty())){
-              String ngjyraSyve=radioButton1.getText();
+            String ngjyraSyve;
+             if(radioButton1.isSelected()){
+           ngjyraSyve=radioButton1.getText();
+             }else if(radioButton2.isSelected()){
+                ngjyraSyve=radioButton2.getText();
+             } else  {
+                 ngjyraSyve=radioButton3.getText();
+             }
+
               String mosha=(String) comboBox.getSelectedItem();
               String emri=textField1.getText();
               String mbiemri=textField2.getText();
@@ -293,5 +301,3 @@ public class Skedar extends JFrame{
           }
          }
         }
-    }
-}
