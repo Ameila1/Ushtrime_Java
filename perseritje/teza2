@@ -1,1 +1,41 @@
+/*Ndertoni nje aplet i cili shfaq vija ne gjatesi,ngjyra dhe trashesi te rastesishme*/
+public class VijaRandom extends JFrame {
 
+    private JPanel panelVizatimi;
+
+    public static void main(String[] args) {
+        new VijaRandom();
+    }
+
+    public VijaRandom() {
+        setSize(400, 400);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Vija random");
+
+        panelVizatimi = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+
+                Random r = new Random();
+                for (int i = 0; i < 100; i++) {
+                    int x1 = r.nextInt(getWidth()); // Gjenero koordinatat x dhe y të rastësishme në përmasat e panelit
+                    int y1 = r.nextInt(getHeight());
+                    int x2 = r.nextInt(getWidth());
+                    int y2 = r.nextInt(getHeight());
+
+                    Color c = new Color(r.nextInt(256), r.nextInt(256), r.nextInt(256)); // Gjenero një ngjyrë të rastësishme
+                    float trashesia = r.nextFloat() * 10; // Gjenero një trashësi të rastësishme
+
+                    Graphics2D g2d = (Graphics2D) g;
+                    g2d.setStroke(new BasicStroke(trashesia)); // Vendos trashësinë e vijës
+                    g.setColor(c); // Vendos ngjyrën e vijës
+                    g.drawLine(x1, y1, x2, y2); // Vizato vijën me koordinatat e caktuara
+                }
+            }
+        };
+
+        add(panelVizatimi);
+        setVisible(true);
+    }
+}
