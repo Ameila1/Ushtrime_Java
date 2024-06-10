@@ -227,3 +227,71 @@ public class Skedar extends JFrame{
     }
 
 }
+
+Ush4
+/*Ndertoni nje aplikacion grafik qe sherben per te percaktuar karakteristikat e nje personi.
+* Nderfaqja ka nje grup radio butonash qe sherbejne per te percaktuar ngjyren e syve.
+  nje combobox qe percaktn grup moshen si dhe dy fusha teksti ne te cilen do te vendoset emri dhe mbiemri i personit.
+* Forma di te kete dhe nje buton.Kur perdoruesi te klikoj butonin nje nje fush teksti do te shfaqen te gjitha
+* zgjedhjet e bera nga perdoruesi*/
+public class Skedar extends JFrame{
+    private ButtonGroup group;
+    private JRadioButton radioButton1,radioButton2,radioButton3;//kaf,blu.jeshil
+    private JComboBox comboBox;//percaktojme grupmoshen
+    private JTextField textField1,textField2;//vendosim emrin dhe mbiemri;
+    private JTextArea textArea;//shfaqja e te gjitha vlerave te zgjedhura nga perdoruesi
+    private JButton button;
+    public static void main(String[] args){
+        new Skedar();
+    }
+    public Skedar(){
+        setSize(350,350);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Mini-form");
+        JPanel panel=new JPanel();
+        ActionListener d=new Degjues();
+        group=new ButtonGroup();
+        radioButton1=new JRadioButton("Blu");
+        radioButton2=new JRadioButton("Jeshile");
+        radioButton3=new JRadioButton("Kafe");
+        group.add(radioButton1);
+        group.add(radioButton2);
+        group.add(radioButton3);
+        comboBox=new JComboBox<>();
+        comboBox.addItem("18");
+        comboBox.addItem("19");
+        comboBox.addItem("20");
+        textField1=new JTextField(20);//per emrin
+        textField2=new JTextField(20);//mbiemri
+        button=new JButton("Shfaq zgjedhjet e bera");
+        button.addActionListener(d);
+        textArea=new JTextArea(20,100);
+        panel.add(radioButton1);
+        panel.add(radioButton2);
+        panel.add(radioButton3);
+        panel.add(comboBox);
+        panel.add(textField1);
+        panel.add(textField2);
+        panel.add(button);
+        panel.add(textArea);
+        add(panel);
+        setVisible(true);
+    }
+    class Degjues implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+         if(e.getSource()==button){
+          if((radioButton1.isSelected()||radioButton2.isSelected()||radioButton3.isSelected())&& (!textField1.getText().isEmpty()&& !textField2.getText().isEmpty())){
+              String ngjyraSyve=radioButton1.getText();
+              String mosha=(String) comboBox.getSelectedItem();
+              String emri=textField1.getText();
+              String mbiemri=textField2.getText();
+              textArea.append("Emri: "+emri+"\tMbiemri: "+mbiemri+"\tMosha: "+mosha+"\tNgjyra e syve: "+ngjyraSyve);
+
+          }else{
+              JOptionPane.showMessageDialog(null,"Nuk jane plotesuar te gjitha fushat e kerkuara");
+          }
+         }
+        }
+    }
+}
