@@ -1,1 +1,23 @@
+/*Shkruani nje metode merr Akronim e cila kthen akronimin e nje stringu qe merr
+* si parameter.Per kete do te perdoret karakteri# dhe jo hapsira duke supozuar qe nuk do te kete hapsira
+* ne String.Nje akronik perbehet nga shkronja e pare e inputit sitring jo#
+* dhe nga te gjitha karakteret jo thurje qe ndjektin karakterin #.shembull merrAkronim("Not#a##Number)->NaN*/
+public class Kerkimi {
+    public static String merrAkronim(String tekst){
+        String[] karaktere=tekst.split("#");
+        //Not a Number;
+        String fjalaERe="";
+        for(String fjala:karaktere) {
+            if (!fjala.isEmpty()) {
+                fjalaERe = fjalaERe + fjala.charAt(0);
+            }
+        }
+        return fjalaERe;
+    }
+    public static void main(String[] args){
 
+      String f=  merrAkronim("Not#a##Number");
+        System.out.println( f);
+    }
+
+}
