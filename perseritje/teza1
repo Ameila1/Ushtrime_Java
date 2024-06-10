@@ -148,77 +148,77 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Random;
 
-public class Kerkimi extends JFrame {
-    private ArrayList<Line> lines;
-    private JPanel drawingPanel;
-
-    public static void main(String[] args) {
-        new Kerkimi();
+public class VijaRandom extends JFrame {
+    private JButton buton1,buton2;
+    private JPanel panelVizatimi;
+    private ArrayList<Vija> vijat;
+    private static class Vija{
+        int x1,x2,x3,x4;
+        Vija(int x1,int x2,int x3,int x4){
+            this.x1=x1;
+            this.x2=x2;
+            this.x3=x3;
+            this.x4=x4;
+        }
     }
-
-    public Kerkimi() {
-        setTitle("Random Lines");
-        setSize(400, 400);
+    public static void main(String[] args){
+        new VijaRandom();
+    }
+    class Degjues implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(e.getSource()==buton1){
+                shtoVija();
+            }
+            if(e.getSource()==buton2){
+                hiqVije();
+            }
+        }
+    }
+    public VijaRandom(){
+        setTitle("Vija random");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-
-        lines = new ArrayList<>();
-        drawingPanel = new JPanel() {
+        setSize(350,350);
+        ActionListener d=new Degjues();
+        vijat=new ArrayList<>();
+        JPanel panel=new JPanel();
+        panel.setLayout(new GridLayout(1,2));
+        buton1=new JButton("Kliko per te shtuar vija");
+        buton2=new JButton("Kliko per te hequr vija");
+        buton1.addActionListener(d);
+        buton2.addActionListener(d);
+        panel.add(buton1);
+        panel.add(buton2);
+        panelVizatimi=new JPanel(){
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                for (Line line : lines) {
-                    g.drawLine(line.x1, line.y1, line.x2, line.y2);
+                for(Vija v:vijat){
+                    g.drawLine(v.x1, v.x2, v.x3, v.x4);
                 }
             }
         };
-        drawingPanel.setPreferredSize(new Dimension(300, 300));
-        add(drawingPanel, BorderLayout.CENTER);
-
-        JButton addButton = new JButton("Add Line");
-        addButton.addActionListener(e -> addLine());
-
-        JButton removeButton = new JButton("Remove Line");
-        removeButton.addActionListener(e -> removeLine());
-
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.add(addButton);
-        buttonPanel.add(removeButton);
-
-        add(buttonPanel, BorderLayout.SOUTH);
-
+        add(panelVizatimi,BorderLayout.CENTER);
+        add(panel,BorderLayout.SOUTH);
         setVisible(true);
     }
 
-    private void addLine() {
-        Random random = new Random();
-        int x1 = random.nextInt(300);
-        int y1 = random.nextInt(300);
-        int x2 = random.nextInt(300);
-        int y2 = random.nextInt(300);
-        lines.add(new Line(x1, y1, x2, y2));
-        drawingPanel.repaint();
+    private void shtoVija(){
+        Random random=new Random();
+        int x1=random.nextInt(300);
+        int x2=random.nextInt(300);
+        int x3=random.nextInt(300);
+        int x4=random.nextInt(300);
+        vijat.add(new Vija(x1,x2,x3,x4));
+        panelVizatimi.repaint();
     }
-
-    private void removeLine() {
-        if (!lines.isEmpty()) {
-            lines.remove(lines.size() - 1);
-            drawingPanel.repaint();
-        }
-    }
-
-    private static class Line {
-        int x1, y1, x2, y2;
-
-        Line(int x1, int y1, int x2, int y2) {
-            this.x1 = x1;
-            this.y1 = y1;
-            this.x2 = x2;
-            this.y2 = y2;
+    private void hiqVije(){
+        if(!vijat.isEmpty()){
+            vijat.remove(vijat.size()-1);
+            panelVizatimi.repaint();
         }
     }
 }
