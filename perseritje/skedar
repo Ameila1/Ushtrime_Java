@@ -1,0 +1,69 @@
+/*Ndertoni nje aplikacion qe lexon nga skedar(me ane te nje objekti te formuar nga klasa
+ * JFileChooser kur klikohet ne nje pubton te emeruar hapskedare ne nje JTextArea shfaq te gjitha rreshtat
+ * te cilat permbaje nje fjale te caktuar qe shkruhet ne nje JTextField ne kete dritare si dhe numrin e hereve qe ajo eshte shfaqur
+ * Ideja:lexoj nje skedar duke perdorur nje nderfaqe
+ * skedari hapet kur klikoj nje buton
+ * Textfield-i ka nje x fjale qe un kerkoj ne skedar
+ * textarea-shfaq rezultatin(nqs fjala ndodhet te rreshti shfaq gjith fjalin dhe sa here ndodhet fjala aty.
+ * */
+public class Skedar extends JFrame{
+    private JTextField textField;//per te marr fjalen qe kerojme
+    private JButton button;//per te hapur skedarin
+    private JTextArea textArea;//shfaqim rezultat
+    public static void main(String[] args){
+        new Skedar();
+    }
+    public Skedar(){
+        setSize(450,450);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Skedaret:");
+        JPanel panel=new JPanel();
+        ActionListener d=new Degjues();
+        textField = new JTextField(20);
+        button=new JButton("Zgjidh skedarin");
+        textArea=new JTextArea(30,60);
+        button.addActionListener(d);
+        panel.add(textField);
+        panel.add(button);
+        panel.add(textArea);
+        add(panel);
+        setVisible(true);
+    }
+    class Degjues implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            if(e.getSource()==button){
+                JFileChooser fileChooser=new JFileChooser();
+                int rezultati=fileChooser.showOpenDialog(null);//0 nqs zgjidhet skedari
+                if(rezultati==JFileChooser.APPROVE_OPTION){
+                    File file=new File(fileChooser.getSelectedFile().getAbsolutePath());
+                    try {
+                        Scanner in=new Scanner(file);
+                        String rreshti;
+                        String fjalaEkerkuar=textField.getText();
+                        int c;
+                        int i=1;
+                        while(in.hasNextLine()){
+                            c=0;
+                            rreshti=in.nextLine();
+                            String[] fjalet=rreshti.split("\\s+");
+                            for(String fjala:fjalet){
+                                if(fjala.equalsIgnoreCase(fjalaEkerkuar)){
+                                    c++;
+                                }
+                            }
+                            i++;//per nr e rreshtave
+                            if(c>=1){
+                                textArea.append("\nRreshi "+i+":"+rreshti+".\nFjala:"+fjalaEkerkuar+"eshte perseritur "+c);
+                            }
+
+                        }
+                        in.close();
+
+                    } catch (FileNotFoundException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+            }
+        }
+    }
+}
