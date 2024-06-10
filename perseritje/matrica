@@ -1,0 +1,44 @@
+/*Supozoni se eshte dhene tabela dydimensionale,e cila jep notat
+* e studenteve te nje klase,(cdo rresht eshte per nje student
+* dhe cdo kolon tregon notat per nje lende.Ndertoni nje metode dhe kthen emrin e studneteve me mesatare me te larte
+*      S.M Ark  C++
+* Ami  10  10   7    27/j=mes1
+* Dea  10  10   5    25/j=mes2
+* Ada  10   9   9    28/j=mes3
+* Alba  8   8   5    21/j=mes4
+* */
+public class Skedar {
+    public static String studentiMeMesatarenMeTeLarte(String[] emrat,String[] lendet,int[][] notat){
+        int shuma;
+        double mesatarja;
+        double[] mesataret=new double[emrat.length];
+        for(int i=0;i< emrat.length;i++){
+            shuma=0;
+            for(int j=0;j< lendet.length;j++){
+                shuma=shuma+notat[i][j];
+            }
+            mesatarja=(double) shuma/lendet.length;
+            mesataret[i]=mesatarja;
+        }
+        double max=mesataret[0];
+        int poz=0;
+        for(int i=1;i<mesataret.length;i++){
+            if(max<mesataret[i]){
+                max=mesataret[i];
+                poz=i;
+            }
+        }
+        return emrat[poz];
+    }
+    public static void main(String[] args) {
+        String[] emrat = {"Ami", "Dea", "Ada", "Alba"};
+        String[] lendet = {"Arkitekture", "C++", "Sisteme Multimediale"};
+        int[][] notat = {{10, 10, 7},  // Notat për Ami
+                {10, 10, 5},  // Notat për Dea
+                {10, 9, 9},   // Notat për Ada
+                {8, 8, 5}   };  // Notat për Alba}
+        String emri=studentiMeMesatarenMeTeLarte(emrat,lendet,notat);
+        System.out.println("Emri i stdentit me mesatare me te larte eshte:"+emri);
+
+    }
+}
