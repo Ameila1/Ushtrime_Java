@@ -138,3 +138,92 @@ public class Skedar extends JFrame{
         }
     }
 }
+
+
+
+
+Ush3 =deri diku sakte,ishte i gjate pertova
+
+/*Ndertoni nje program me nderfaqe perdoruesi,qe i lejon perdoruesit te konvertoje temperaturen
+* nga grade ne celcius dhe"farenheit" ose anasjelltas.Programi mban dy combobox me vlerat:"grade celcius" dhe "farenheit,nje fush teksti
+* ku do te vendoset vlera,nje label ku do te afishohet rezultati dhe nje buton "konverto ne klim te te cilit behet konvertimi,Perdoruesi
+*   zgjedh te konvertoje vleren e vendosur ne fushen e tekstit,nga temperatura e zgjeddhur ne listen e pare ne temperaturen e zgjedhur ne te dyten.ne label
+* duhet te afishohet temperatura e konvertuar.Programi duhet te kontrrolloj te dhenat qe te jene te plotesuara dhe brenda vlerave te lejuara perndryshe
+* te afishoj mesazh gabimi.Ne klikim te
+*butonit Ruaj te dhenat te vendosen ne nje arraylist dhe programi te gjeneroj nje kod per kete veprim*/
+public class Skedar extends JFrame{
+    private JComboBox comboBox1,comboBox2;
+    private JTextField textField;
+    private JButton button1,button2;
+    private JLabel label;
+    private ArrayList<String> lista;
+    public static void main(String[] args){
+        new Skedar();
+    }
+    public Skedar(){
+        setSize(350,350);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Konvertim temperaturash");
+        JPanel panel=new JPanel();
+        ActionListener d=new Degjues();
+        lista=new ArrayList<>();
+        comboBox1=new JComboBox();
+        comboBox1.addItem("Grad celcius");
+        comboBox1.addItem("Farenheit");
+        comboBox2=new JComboBox<>();
+        comboBox2.addItem("Grad celcius");
+        comboBox2.addItem("Farenheit");
+        textField=new JTextField(10);
+        button1=new JButton("Konverto");
+        label=new JLabel();
+        button2=new JButton("Ruaj");
+        button1.addActionListener(d);
+        button2.addActionListener(d);
+        panel.add(comboBox1);
+        panel.add(comboBox2);
+        panel.add(textField);
+        panel.add(button1);
+        panel.add(label);
+        panel.add(button2);
+        add(panel);
+        setVisible(true);
+
+    }
+    class Degjues implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            String zgjedhja1=(String) comboBox1.getSelectedItem();
+            String zgjedhja2=(String) comboBox2.getSelectedItem();
+            double nrTemperatures=Double.parseDouble(textField.getText());
+
+            if(e.getSource()==button1){
+               if(textField.getText().isEmpty()){
+                   JOptionPane.showMessageDialog(null,"Gabim ne dhenien e te dhenave");
+               }else{
+                   lista.add(zgjedhja1);
+                   lista.add(zgjedhja2);
+                   if(zgjedhja1.equalsIgnoreCase(zgjedhja2)&& zgjedhja2.equalsIgnoreCase(zgjedhja1)){
+                       label.setText(textField.getText());
+                       lista.add(textField.getText());
+                   }
+                   if(zgjedhja1.equalsIgnoreCase("Grad celcius")&&zgjedhja2.equalsIgnoreCase("Farenheit")){
+                       nrTemperatures=nrTemperatures*10;//supozoj po shumezova me 10 e kthej nga grad celcius ne F'
+                       label.setText(""+nrTemperatures);
+                       lista.add(""+nrTemperatures);
+                   }
+                   if(zgjedhja1.equalsIgnoreCase("Farenheit") && zgjedhja1.equalsIgnoreCase("Grad celcius")){
+                       nrTemperatures=nrTemperatures/10;
+                       label.setText(""+nrTemperatures);
+                       lista.add(""+nrTemperatures);
+                   }
+
+               }
+            }
+
+            if(e.getSource()==button2){
+                JOptionPane.showMessageDialog(null,"Temperatura "+nrTemperatures+"u kthye nga: "+lista.get(0)+"ne "+lista.get(1)+".Rezultati i konvertimit eshte: "+lista.get(2));
+            }
+
+        }
+    }
+
+}
