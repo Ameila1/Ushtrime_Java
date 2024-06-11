@@ -1,0 +1,104 @@
+public class Person {
+    private String emri;
+    private String adresa;
+    public Person(){
+        this.emri="";
+        this.adresa="";
+    }
+    public Person(String emri,String adresa){
+        this.emri=emri;
+        this.adresa=adresa;
+    }
+    public void setEmri(String emri){
+        this.emri=emri;
+    }
+    public void setAdresa(String adresa){
+        this.adresa=adresa;
+    }
+    public String getEmri(){
+        return emri;
+    }
+    public String getAdresa(){
+        return adresa;
+    }
+    public String toString(){
+        return "Emri: "+this.emri+"\nAdresa: "+adresa+"\n";
+    }
+    //krahasimi i dy objekteve nqs jane i njejti person
+    public boolean equals(Object obj){
+        if(this==obj){
+            return true;
+        }
+        if(obj==null||getClass()!=obj.getClass()){
+            return false;
+        }
+        Person p=(Person) obj;
+        return this.getEmri().equalsIgnoreCase(((Person) obj).getEmri())&& this.getAdresa().equalsIgnoreCase(((Person) obj).getAdresa());
+    }
+}
+/*Nderto subklasen Mesues qe trashegon nga klasa person
+* dhe shton variablat e instances qe mbajne numrin e kurseve,
+* listen e emrave te kurseve qe jep ai mesues dhe je kod te mesuesit
+* qe perfaqesohet nga nje numer qe inkrementohet per cdo instance.
+* Klasa duhet te kete metodat shto kurs dhe hiqKurs dhe metoden toString */
+
+import java.util.ArrayList;
+
+public class Mesues extends Person{
+    private static int i=0;
+    private int nrKurse;
+    private ArrayList<String> emratEKurseve;
+    private int kodMesuesi;
+    public Mesues(){
+        this.nrKurse=0;
+        this.emratEKurseve=new ArrayList<>();
+        this.kodMesuesi=111111+ndryshoI();
+    }
+    public Mesues(String emri,String adresa,int nrKurse,ArrayList<String> emratEKurseve){
+        super(emri,adresa);
+        this.nrKurse=nrKurse;
+        this.emratEKurseve=emratEKurseve;
+        this.kodMesuesi=111111+ndryshoI();
+    }
+
+    public void shtoKurs(String kurs){
+        if(emratEKurseve.contains(kurs)){
+            System.out.println("Kursi eshte ekzistues te lista e kurseve.");
+        }else{
+            emratEKurseve.add(kurs);
+        }
+
+    }
+    public void hiqKurs(String kurs){
+        if(!emratEKurseve.contains(kurs)){
+            System.out.println("Kursi nuk eksiston per ta hequr");
+        }else{
+            emratEKurseve.remove(kurs);
+        }
+    }
+
+
+    public String toString(){
+        return super.toString()+"\nNumri i kurseve: "+nrKurse+"\nEmrat e kurseve: "+emratEKurseve+"\nKodi: "+kodMesuesi;
+    }
+
+
+
+    public static int ndryshoI(){
+        return ++i;
+    }
+
+}
+public class Main {
+    public static void main(String[] args){
+        ArrayList<String> nrKurse=new ArrayList<>(Arrays.asList("Java","Sisteme multimediale","Bazat e informatikes"));
+        Mesues m=new Mesues("Ersida Ceci","Rruga:Altin Mancellar",3,nrKurse);
+       System.out.println(m.toString());
+        ArrayList<String> nrKurse2=new ArrayList<>(Arrays.asList("Analiz","Statisik","Grafe"));
+        Mesues m2=new Mesues("Ameila Neza","Rruga:Treni",3,nrKurse2);
+        System.out.println(m2.toString());
+        ArrayList<String> nrKurse3=new ArrayList<>(Arrays.asList("Struktur te dhenash ne C","Sisteme logjike","Anglisht"));
+        Mesues m3=new Mesues("Dea","Rruga:Myslim shyri",3,nrKurse3);
+        System.out.println(m3.toString());
+    }
+}
