@@ -1,3 +1,4 @@
+Ush1
 public class Person {
     private String emri;
     private String adresa;
@@ -102,3 +103,79 @@ public class Main {
         System.out.println(m3.toString());
     }
 }
+
+Ush2
+
+/*Krijoni nje klase abstrakte e quajtur AbonuesRevistash e cila mban rekorde per adresen dhe normen e abonimit
+* per abonuesin.Percaktoni metodat set dhe get per adresen dhe normen e abonimit
+* Metoda set oer nirmen e abonimit eshte abstrakte.Ndertoni metoden equals() e cila kontrrollon nese dy Abonues jane te njete,
+* pra nese ato kane te njejten adrese*/
+
+public abstract class AbonuesRevistash{
+    public String adresa;
+    public double normaAbonimit;
+    public void setAdresa(String adresa){
+        this.adresa=adresa;
+    }
+    public abstract void setNormaAbonimit(double normaAbonimit);
+    public String getAdresa(){
+        return adresa;
+    }
+    public double getNormaAbonimit(){
+        return normaAbonimit;
+    }
+
+   //kontrrollon nese dy Abonues jane te njete,
+   //* pra nese ato kane te njejten adrese
+    @Override
+    public boolean equals(Object obj) {
+       if(this==obj){
+           return true;
+       }
+       if(obj==null||getClass()!=obj.getClass()){
+           return false;
+       }
+       AbonuesRevistash a=(AbonuesRevistash) obj;
+
+       return this.adresa.equalsIgnoreCase(a.adresa);
+    }
+}
+/*Ndetoni klasen ShtateDiteAbonues e cila trashegon nga klasa AbonuesRevistash
+ * Konstruktori vendos per abonuesin normen 5 euro.Klasa duhet te perfshije metoden toString e cila do te ktheje adrese,noren.
+ * Te gjenerohet nje kod per secilin abonues te krijuar*/
+public class ShtateDiteAbonues extends AbonuesRevistash{
+    public static final double NORMA_ABONIMIT = 5.0;
+    public static int i=0;
+    private int kodiAbnuesit;
+    public ShtateDiteAbonues(){
+        adresa="";
+        normaAbonimit=NORMA_ABONIMIT;
+        kodiAbnuesit=111111+ndryshoI();
+    }
+    public ShtateDiteAbonues(String adresa) {
+        this.adresa = adresa;
+        this.normaAbonimit = NORMA_ABONIMIT;
+        this.kodiAbnuesit = 111111 + ndryshoI();
+    }
+
+    @Override
+    public void setNormaAbonimit(double NORMA_ABONIMIT) {
+        this.normaAbonimit=NORMA_ABONIMIT;
+    }
+    public String toString() {
+        return "Adresa: " + adresa + "\nNorma e abonimit: " + normaAbonimit + "\nKodi: " + kodiAbnuesit;
+    }
+    public static int ndryshoI(){
+        return ++i;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        ShtateDiteAbonues abonues1 = new ShtateDiteAbonues("Rruga:Altin Mancellar");
+        ShtateDiteAbonues abonues2 = new ShtateDiteAbonues("Rruga:Treni");
+
+        System.out.println(abonues1.toString());
+        System.out.println(abonues2.toString());
+    }
+}
+
