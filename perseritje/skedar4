@@ -1,0 +1,38 @@
+/*
+Ndërtoni një program që lexon një skedar tekst të quajtur input.txt, heq të gjitha karakteret
+që nuk janë shkronja, i konverton në shkronja të vogla dhe shkruan rezultatin në një skedar
+tekst të quajtur output.txt. Për të përcaktuar nëse një karakter është një shkronjë mund të
+përdorni metodën: boolean Character.isLetter(char c) që kthen true nëse c është një
+shkronjë dhe false në të kundërt.
+ 1)Lexoj nje skedar ,jo me nderfaqe
+ 2)I heq te gjithe numrat,numrin po e konveroj ne a->e shkruaj ne nje skedar
+*/
+public class Main {
+    public static void main(String[] args) throws FileNotFoundException{
+        Scanner in=new Scanner(System.in);
+        System.out.println("Jepni skedarin hyres:");
+        String skedari1=in.nextLine();
+        System.out.println("Jepni skedarin ku do shkruhen te dhenat.");
+        String skedari2=in.nextLine();
+        File file1=new File(skedari1);
+        File file2=new File(skedari2);
+        Scanner input=new Scanner(file1);
+        PrintWriter out=new PrintWriter(file2);
+        String fjala;
+        while(input.hasNext()){
+            fjala=input.next();
+            char[] karaktere=fjala.toCharArray();
+            for(char k:karaktere){
+                if(Character.isDigit(k)){
+                    fjala=fjala.replace(k,'a');
+                }
+            }
+            out.println(fjala);
+        }
+        in.close();
+        out.close();
+    }
+}
+//C:\Users\User\Documents\nota.txt
+//C:\Users\User\Documents\studentet.txt
+
