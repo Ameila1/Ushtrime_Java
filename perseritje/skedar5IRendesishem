@@ -1,0 +1,86 @@
+/*Ndërtoni një aplikacion grafik në të cilin përdoruesi zgjedh nëpërmjet një dialog box-i dy skedarë
+tekst. Programi duhet të krahasojë çdo rresht të dy skedarëve duke kontrolluar nëse në atë rresht ka
+fjalë të njëjta për të dy skedarët. Fjalët e njëjta do të printohen në një JTextArea në formatin (numri
+i rreshtit: fjala).*/
+//te nje textarea do te printoj te gjitha fjalet e njejta ne nje rresht spsh:Rreshti:fjala
+public class Main extends JFrame{
+    private JButton button1,button2,button3;
+    private JTextArea textArea;
+    private File file1,file2;
+    private JScrollPane scrollPane;
+    public static void main(String[] args){
+        new Main();
+    }
+    public Main(){
+        setSize(450,450);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Fjalet e njejta per cdo rresht te skedarit:");
+        JPanel panel=new JPanel(new GridLayout(1,2));
+        button1=new JButton("Zgjidh skedarin e pare");
+        button2=new JButton("Zgjidh skedarin e dyte");
+        ActionListener d=new Degjues();
+        button1.addActionListener(d);
+        button2.addActionListener(d);
+        panel.add(button1);
+        panel.add(button2);
+        textArea=new JTextArea(30,30);
+        scrollPane=new JScrollPane(textArea);
+        button3=new JButton("Afisho rezultatin");
+        button3.addActionListener(d);
+        add(panel,BorderLayout.NORTH);
+        add(scrollPane,BorderLayout.CENTER);
+        add(button3,BorderLayout.SOUTH);
+        setVisible(true);
+    }
+    class Degjues implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(e.getSource()==button1){
+                JFileChooser fileChooser=new JFileChooser();
+                int rez1=fileChooser.showOpenDialog(null);
+                if(rez1==JFileChooser.APPROVE_OPTION){
+                    file1=new File(fileChooser.getSelectedFile().getAbsolutePath());
+                }
+            }
+            if(e.getSource()==button2){
+                JFileChooser fileChooser2=new JFileChooser();
+                int rez2=fileChooser2.showOpenDialog(null);
+                if(rez2==JFileChooser.APPROVE_OPTION){
+                    file2=new File(fileChooser2.getSelectedFile().getAbsolutePath());
+                }
+            }
+            if(e.getSource()==button3){
+                try {
+                    Scanner in1=new Scanner(file1);
+                    Scanner in2=new Scanner(file2);
+                    String fjalia1;
+                    String fjalia2;
+                    Set<String> list;
+                    int i=0;
+                    while(in1.hasNextLine()&&in2.hasNextLine()){
+                        i++;
+                        list=new HashSet<>();
+
+                        fjalia1=in1.nextLine();
+                        fjalia2=in2.nextLine();
+                        String[] fjala1=fjalia1.split("\\s+");
+                        String[] fjala2=fjalia2.split("\\s+");
+                        for(String fjala:fjala1){
+                            for(String fjalaa:fjala2){
+                                if(fjala.equalsIgnoreCase(fjalaa)){
+                                    list.add(fjala);
+                                }
+                            }
+                        }
+
+                        textArea.append("Reshti: "+i+"\nFjalet: "+list+"\n");
+
+                    }
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+
+        }
+    }
+}
