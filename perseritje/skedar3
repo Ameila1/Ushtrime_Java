@@ -1,0 +1,105 @@
+*Ndërtoni një program me ndërfaqe përdoruesi që lejon përdoruesin të shtojë monedhat e
+ llojit nickel, dime dhe quarter në një cantë(koleksion monedhash) dhe të shfaqë vlerën e
+koleksionit në dritare. Gjithashtu programi të mundësojë ruajtjen e cantës në një skedar
+ apo ngarkimin e saj nga skedari.*/
+
+
+public class Main extends JFrame{
+    private JLabel label1,label2,label3;
+    private JTextField textField1,textField2,textField3;
+    private JTextArea textArea;
+    private JScrollPane scrollPane;
+    private JButton button1,button2;
+    private File file1,file2;
+    ArrayList<String> canta;
+
+    public static void main(String[] args){
+        new Main();
+    }
+    public Main(){
+        setSize(350,350);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Te pakten e mbushim canten me leke ketu");
+        JPanel panel=new JPanel(new GridLayout(6,1));
+        ActionListener d=new Degjues();
+        label1=new JLabel("Monedha nickel: ");
+        label2=new JLabel("Monedha dime: ");
+        label3=new JLabel("Monedha quarter: ");
+        textField1=new JTextField(10);
+        textField2=new JTextField(10);
+        textField3=new JTextField(10);
+        panel.add(label1);
+        panel.add(textField1);
+        panel.add(label2);
+        panel.add(textField2);
+        panel.add(label3);
+        panel.add(textField3);
+        JPanel panel2=new JPanel(new GridLayout());
+        button1=new JButton("Zgjidh skedarin ku do te ruash canten");
+        button2=new JButton("Ngarko skedarin ");
+        button1.addActionListener(d);
+        button2.addActionListener(d);
+        panel2.add(button1);
+        panel2.add(button2);
+        add(panel,BorderLayout.WEST);
+        textArea=new JTextArea(30,30);
+        scrollPane=new JScrollPane(textArea);
+        add(scrollPane,BorderLayout.CENTER);
+        add(panel2,BorderLayout.SOUTH);
+        setVisible(true);
+    }
+    class Degjues implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(e.getSource()==button1){
+                JFileChooser fileChooser=new JFileChooser();
+                int res1=fileChooser.showOpenDialog(null);
+                if(res1==JFileChooser.APPROVE_OPTION){
+                    file1=new File(fileChooser.getSelectedFile().getAbsolutePath());
+
+                }
+                try {
+                    PrintWriter out=new PrintWriter(file1);
+                    int monedha1=Integer.parseInt(textField1.getText());
+                    int monedha2=Integer.parseInt(textField2.getText());
+                    int monedha3=Integer.parseInt(textField3.getText());
+                    canta=new ArrayList<>();
+                    for(int i=0;i<monedha1;i++){
+                        canta.add("nickel");
+                    }
+                    for(int i=0;i<monedha2;i++){
+                        canta.add("dime");
+                    }
+                    for(int i=0;i<monedha3;i++){
+                        canta.add("quarter");
+                    }
+                    out.println(canta);
+                    out.close();
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+            if(e.getSource()==button2){
+
+                    JFileChooser fileChooser2=new JFileChooser();
+                    int res2=fileChooser2.showOpenDialog(null);
+                    if(res2==JFileChooser.APPROVE_OPTION) {
+                        file2 = new File(fileChooser2.getSelectedFile().getAbsolutePath());
+                    }
+
+                try {
+                    Scanner in=new Scanner(file2);
+                    String monedha;
+                    while(in.hasNext()){
+                        monedha=in.next();
+                        textArea.append(monedha);
+                    }
+                    in.close();
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        }
+    }
+}
