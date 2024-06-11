@@ -1,0 +1,85 @@
+Ndërtoni një program me ndërfaqe përdoruesi që lexon dy skedarë tekst të cilët zgjidhen
+nga përdoruesi nëpërmjet një dialog box-i për zgjedhjen e skedarit. Kur përdoruesi klikon
+në një buton të quajtur Afisho në një sipërfaqe teksti afishohen të gjitha fjalët që ndodhen
+në të dy skedarët.
+public class Main extends JFrame {
+    //do afishojme te gjitha fjalet qe ndodhen ne te dyja skedaret
+    public JButton button1, button2, button3;
+    private JTextArea textArea;
+    private JScrollPane scrollPane;
+    private File file1, file2;
+
+    public static void main(String[] args) {
+        new Main();
+    }
+
+    public Main() {
+        setSize(350, 350);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Fjalet e skedareve");
+        JPanel panel = new JPanel();
+        ActionListener d = new Degjues();
+        button1 = new JButton("Kliko per te zgjedhur skedarin e pare");
+        button2 = new JButton("Kliko per te zgjedhur skedarin e dyte");
+        button3 = new JButton("Kliko per te afishuar fjalet qe ndodhen ne te dy skedaret.");
+        button1.addActionListener(d);
+        button2.addActionListener(d);
+        button3.addActionListener(d);
+        textArea = new JTextArea(30, 30);
+        scrollPane = new JScrollPane(textArea);
+        panel.setLayout(new GridLayout(1, 2));
+        panel.add(button1);
+        panel.add(button2);
+        add(panel, BorderLayout.NORTH);
+        add(scrollPane, BorderLayout.CENTER);
+        add(button3, BorderLayout.SOUTH);
+        setVisible(true);
+
+    }
+
+    class Degjues implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource() == button1) {
+                JFileChooser filechooser = new JFileChooser();
+                int rezultati = filechooser.showOpenDialog(null);
+                if (rezultati == JFileChooser.APPROVE_OPTION) {
+                    file1 = new File(filechooser.getSelectedFile().getAbsolutePath());
+                }
+            }
+
+            if (e.getSource() == button2) {
+                JFileChooser fileChooser2 = new JFileChooser();
+                int rezultati2 = fileChooser2.showOpenDialog(null);
+                if (rezultati2 == JFileChooser.APPROVE_OPTION) {
+                    file2 = new File(fileChooser2.getSelectedFile().getAbsolutePath());
+                }
+
+            }
+
+            if (e.getSource() == button3) {
+                Scanner in1, in2;
+                try {
+                    in1 = new Scanner(file1);
+                    in2 = new Scanner(file2);
+                    String fjala1;
+                    String fjala2;
+                    textArea.append("Fjalet e skedarit te pare:");
+                    while (in1.hasNext()) {
+                        fjala1 = in1.next();
+                        textArea.append(fjala1 + " \n");
+                    }
+                    textArea.append("Fjalet e skedarit te dyte: ");
+                    while (in2.hasNext()) {
+                        fjala2 = in2.next();
+                        textArea.append(fjala2 + " \n");
+                    }
+                    in1.close();
+                    in2.close();
+                } catch (FileNotFoundException exception) {
+                    System.out.println(exception.getMessage());
+                }
+            }
+        }
+
+    }
+}
