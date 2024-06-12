@@ -1,0 +1,91 @@
+
+/*Ndertoni nje program,i cili gjen mesataren e provimit per te gjithe
+* klasen.Provimi vleresohet me pike,te cilat jane numra te plote ne intervalin nga
+* 0 ne 100(0 dhe 100 jane te vlefshme si vleresime).Aplikacioni te marr vleresimet
+* per secilin nxenes nga nje skedar teks te vendosur ne rreshta te vecanta kur
+* perdruesi te klikoj ne butonin "Get Grades".Fillimisht butoni Avarage eshte
+* inaktiv,por behet aktiv kur klikohet butoni"Get Grades".Pasi perdoruesi klikon ne
+* butonin "Get grades" merren vleresimet nga skedari tekst dhe vendosen ne
+* siperfaqen e tekstit majtas,ndersa kur perdoruesi klikon butonin Avarage shfaqet mesatarja ne labelin perkates*/
+
+public class Main extends JFrame{
+    private JLabel label1,label2;
+    private JButton button1,button2;
+    private JTextField textField;
+    private JTextArea textArea;
+    private JScrollPane scrollPane;
+    private ArrayList<Integer> notat;
+    private File file;
+    public static void main(String[] args){
+        new Main();
+    }
+    public Main(){
+        setSize(450,450);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Mesatarja e klases:");
+        JPanel panel1=new JPanel();
+        label1=new JLabel("Lista e notave:");
+        textArea=new JTextArea(60,30);
+        scrollPane=new JScrollPane(textArea);
+        panel1.add(label1);
+        panel1.add(scrollPane);
+        JPanel panel2=new JPanel();
+        button1=new JButton("Afisho notat");
+        button2=new JButton("Afisho mesataren");
+        label2=new JLabel("Mesatarja e klases:");
+        textField=new JTextField(20);
+        ActionListener d= new Degjues();
+        button1.addActionListener(d);
+        button2.addActionListener(d);
+        panel2.add(button1);
+        panel2.add(button2);
+        panel2.add(label2);
+        panel2.add(textField);
+        JPanel panel3=new JPanel();
+        panel3.setLayout(new GridLayout(1,2));
+        panel3.add(panel1);
+        panel3.add(panel2);
+        add(panel3);
+        setVisible(true);
+
+    }
+    class Degjues implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(e.getSource()==button1){
+                JFileChooser fileChooser=new JFileChooser();
+                int res=fileChooser.showOpenDialog(null);
+                if(res==JFileChooser.APPROVE_OPTION){
+                    file=new File(fileChooser.getSelectedFile().getAbsolutePath());
+                    try{
+                        Scanner in=new Scanner(file);
+                        String line;
+                        while(in.hasNextLine()){
+                            line=in.nextLine();
+                            String[] elementet=line.split("\\s+");
+                            //Ameila Neza 85
+                            textArea.append(elementet[elementet.length-1]+" \n");
+                            int nr=Integer.parseInt(elementet[elementet.length-1]);
+                            notat.add(nr);
+                        }
+                        in.close();
+                    }catch(FileNotFoundException ex){
+                        System.out.println(ex.getMessage());
+                    }
+                }
+            }
+            if(e.getSource()==button2){
+                if(file==null){
+                    JOptionPane.showMessageDialog(null,"Nuk kemi cfae afishojme,nuk eshte hapur nfonje skedar.");
+                }else{
+                    int shuma=0;
+                    for(int i=0;i<notat.size();i++){
+                        shuma=shuma+notat.get(i);
+                    }
+                    double mesatarja=shuma/notat.size();
+                    textField.setText(""+mesatarja);
+                }
+            }
+        }
+    }
+}
